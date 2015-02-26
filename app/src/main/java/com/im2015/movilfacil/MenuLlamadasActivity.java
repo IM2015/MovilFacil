@@ -11,7 +11,7 @@ public class MenuLlamadasActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_inicio);
+        setContentView(R.layout.menu_llamada);
     }
 
 
