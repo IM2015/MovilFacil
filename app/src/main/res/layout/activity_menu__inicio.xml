@@ -10,26 +10,24 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="@string/inicio_btn3"
         android:id="@+id/button"
-        android:layout_below="@+id/imageButton4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="101dp" />
+        android:layout_marginTop="53dp"
+        android:layout_alignTop="@+id/button4" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/inicio_btn1"
         android:id="@+id/button2"
-        android:layout_below="@+id/imageButton4"
+        android:layout_above="@+id/button"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="@string/inicio_btn2"
         android:id="@+id/button3"
         android:layout_alignTop="@+id/button2"
         android:layout_alignParentRight="true"
@@ -40,34 +38,55 @@
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/button4"
-        android:layout_alignTop="@+id/button"
-        android:layout_alignRight="@+id/imageButton4"
-        android:layout_alignEnd="@+id/imageButton4" />
+        android:layout_marginBottom="43dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/button2"
+        android:layout_toStartOf="@+id/button2" />
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageButton4"
+        android:src="@drawable/user168"
+        android:scaleType="centerInside"
+        android:nestedScrollingEnabled="true"
+        android:layout_marginBottom="190dp"
+        android:layout_above="@+id/button"
+        android:layout_toStartOf="@+id/button4"
+        android:layout_alignRight="@+id/button"
+        android:layout_alignEnd="@+id/button" />
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageButton5"
+        android:src="@drawable/user168"
+        android:scaleType="centerInside"
+        android:nestedScrollingEnabled="true"
+        android:layout_alignTop="@+id/imageButton4"
+        android:layout_toEndOf="@+id/imageButton4"
+        android:layout_alignBottom="@+id/imageButton4"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_alignStart="@+id/button3" />
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageButton6"
+        android:src="@drawable/user168"
+        android:scaleType="centerInside"
+        android:nestedScrollingEnabled="true"
+        android:layout_alignTop="@+id/imageButton5"
+        android:layout_toLeftOf="@+id/imageButton5"
+        android:layout_toEndOf="@+id/button"
+        android:layout_alignBottom="@+id/imageButton4" />
 
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/horizontalScrollView"
-        android:layout_alignRight="@+id/button3"
-        android:layout_alignEnd="@+id/button3"
-        android:layout_toRightOf="@+id/imageButton5"
-        android:layout_toEndOf="@+id/imageButton5">
-
-    </HorizontalScrollView>
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton5" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton4"
-        android:src="@drawable/user168"
-        android:scaleType="center"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageButton5" />
 
 </RelativeLayout>
