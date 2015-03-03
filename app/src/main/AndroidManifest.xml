@@ -15,6 +15,14 @@
             android:name=".MenuMensajes"
             android:label="@string/title_activity_menu_mensajes" >
         </activity>
+        <activity
+            android:name=".menu_Inicio"
+            android:label="@string/title_activity_menu__inicio" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
