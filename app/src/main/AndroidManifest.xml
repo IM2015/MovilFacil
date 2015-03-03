@@ -8,8 +8,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MenuInicioActivity"
-            android:label="@string/title_activity_menu_inicio" >
+            android:name=".MenuLlamadasActivity"
+            android:label="@string/title_activity_menu_llamadas" >
         </activity>
         <activity
             android:name=".MenuMensajes"
