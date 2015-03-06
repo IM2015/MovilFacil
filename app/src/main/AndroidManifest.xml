@@ -12,10 +12,13 @@
             android:label="@string/title_activity_menu_llamadas" >
         </activity>
         <activity
+
             android:name=".MenuMensajes"
             android:label="@string/title_activity_menu_mensajes" >
         </activity>
         <activity
+
+
             android:name=".menu_Inicio"
             android:label="@string/title_activity_menu__inicio" >
             <intent-filter>
@@ -24,5 +27,6 @@
             </intent-filter>
         </activity>
     </application>
+
 
 </manifest>
