@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.im2015.movilfacil" >
-
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"></uses-permission>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"></uses-permission>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"></uses-permission>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.READ_CONTACTS"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"></uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -12,21 +18,22 @@
             android:label="@string/title_activity_menu_llamadas" >
         </activity>
         <activity
-
             android:name=".MenuMensajes"
             android:label="@string/title_activity_menu_mensajes" >
         </activity>
         <activity
-
-
             android:name=".menu_Inicio"
             android:label="@string/title_activity_menu__inicio" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".NuevoContacto"
+            android:label="@string/title_activity_nuevo_contacto" >
+        </activity>
     </application>
-
 
 </manifest>
