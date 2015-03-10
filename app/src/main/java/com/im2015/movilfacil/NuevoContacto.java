@@ -1,8 +1,12 @@
 package com.im2015.movilfacil;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,17 +21,25 @@ public class NuevoContacto extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_contacto);
         cr = getContentResolver();
+        cr.acquireContentProviderClient("");
+
         Button b = (Button) findViewById(R.id.buttonGuardar);
-        b.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener ol = new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
-               EditText etNombre = (EditText) v.findViewById(R.id.editTextNombre);
-                EditText etNumero = (EditText) v.findViewById(R.id.editTextNumero);
-                (new Contactos(cr)).nuevoContacto(
+
+                EditText etNombre = (EditText) NuevoContacto.this.findViewById(R.id.editTextNombre);
+                EditText etNumero = (EditText) NuevoContacto.this.findViewById(R.id.editTextNumero);
+                Contactos c = (new Contactos(cr));
+                c.nuevoContacto(
                         etNombre.getText().toString(),
-                        etNumero.getText().toString());
+                        etNumero.getText().toString()
+                );
             }
-        });
+        };
+        b.setOnClickListener(ol);
     }
 
 
