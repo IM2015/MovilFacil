@@ -9,21 +9,33 @@ import android.view.View;
 import android.widget.Button;
 
 
+
 public class menu_Inicio extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu__inicio);
-        Button b = (Button) findViewById(R.id.button);
-        b.setOnClickListener(new View.OnClickListener(){
 
+        Button btnLlamadas = (Button) findViewById(R.id.button2);
+        btnLlamadas.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent i = new Intent(v.getContext(),MenuMensajes.class);
-                startActivity(i);
+                Intent intent = new Intent(v.getContext(),MenuLlamadasActivity.class);
+                startActivityForResult(intent,0);
             }
         });
-        }
+
+
+        Button btnMensajes = (Button) findViewById(R.id.button3);
+        btnMensajes.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(v.getContext(),MenuMensajes.class);
+                startActivityForResult(intent,0);
+            }
+        });
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
