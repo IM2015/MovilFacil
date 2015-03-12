@@ -5,10 +5,13 @@ import android.app.Activity;
 import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
 import android.content.OperationApplicationException;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.RemoteException;
 import android.provider.ContactsContract;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Carlos on 08/03/2015.
@@ -46,5 +49,24 @@ public class Contactos {
         } catch (OperationApplicationException e) {
             e.printStackTrace();
         }
+    }
+    public List<Contacto> getContactos(){
+        List<Contacto> l = new ArrayList<Contacto>();
+
+        Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
+        String[] projection    = new String[] {ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+                ContactsContract.CommonDataKinds.Phone.NUMBER};
+
+        Cursor people = cr.query(uri, projection, null, null, null);
+
+        int indexName = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
+        int indexNumber = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+
+        people.moveToFirst();
+        do {
+            l.add(new Contacto(people.getString(indexName),people.getString(indexNumber)));
+            // Do work...
+        } while (people.moveToNext());
+        return l;
     }
 }
