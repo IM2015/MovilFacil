@@ -1,6 +1,7 @@
 package com.im2015.movilfacil;
 
 import android.content.Intent;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,7 +12,7 @@ import android.widget.Button;
 
 
 public class menu_Inicio extends ActionBarActivity {
-
+    public FragmentManager fm = getSupportFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +27,8 @@ public class menu_Inicio extends ActionBarActivity {
         });
 
 
+
+
         Button btnMensajes = (Button) findViewById(R.id.button3);
         btnMensajes.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -33,6 +36,18 @@ public class menu_Inicio extends ActionBarActivity {
                 startActivityForResult(intent,0);
             }
         });
+
+
+        Button btnContactos = (Button) findViewById(R.id.button);
+        btnContactos.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                popupContactos Popup1 = new popupContactos();
+                Popup1.show(fm, "Dialog Fragment");
+
+            }
+        });
+
+
 
     }
 
