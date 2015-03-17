@@ -15,11 +15,11 @@ public class menu_Inicio extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu__inicio);
-        Button b = (Button) findViewById(R.id.button);
+        Button b = (Button) findViewById(R.id.btnContactos);
         b.setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View v){
-                Intent i = new Intent(v.getContext(),MenuMensajes.class);
+                Intent i = new Intent(v.getContext(),ListaContactosActivity.class);
                 startActivity(i);
             }
         });

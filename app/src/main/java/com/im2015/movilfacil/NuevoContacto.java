@@ -49,7 +49,7 @@ public class NuevoContacto extends ActionBarActivity {
                 Contactos c = (new Contactos(cr));
                 Log.i("CONTACTO","");
                 for(Contacto cont : c.getContactos()){
-                    Log.i("CONTACTO",cont.nombre +" "+ cont.numero);
+                    Log.i("CONTACTO",cont.getNombre() +" "+ cont.getNumero());
                 }
 
             }

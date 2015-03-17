@@ -13,5 +13,6 @@
     <string name="inicio_btn2">Mensajes</string>
     <string name="inicio_btn3">Contactos</string>
     <string name="title_activity_nuevo_contacto">NuevoContacto</string>
+    <string name="title_activity_lista_contactos">ListaContactosActivity</string>
 
 </resources>
