@@ -11,21 +11,22 @@ import android.support.v4.app.DialogFragment;
 
 
 public class popupContactos extends DialogFragment {
+    String[] titulos = {
+            "Llamar",
+            "Mensaje",
+            "Editar",
+            "Eliminar"
+    };
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage(R.string.dialog_Title)
-                .setPositiveButton(R.string.dialog_aceptar, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // FIRE ZE MISSILES!
-                    }
-                })
-                .setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // User cancelled the dialog
-                    }
-                });
+        builder.setTitle(R.string.dialog_contacts_title)
+                .setItems(titulos , new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }});
         // Create the AlertDialog object and return it
         return builder.create();
     }

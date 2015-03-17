@@ -16,4 +16,10 @@
     <string name="dialog_Title"> Prueba 1</string>
     <string name="dialog_aceptar">Aceptar</string>
     <string name="dialog_cancel">Cancelar</string>
+
+
+
+
+    <string name="dialog_contacts_title"> Elige una opcion</string>
+
 </resources>
