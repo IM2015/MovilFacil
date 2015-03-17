@@ -10,9 +10,10 @@
     <string name="title_activity_menu_mensajes">MenuMensajes</string>
     <string name="title_activity_menu__inicio">Inicio</string>
     <string name="inicio_btn1">Llamadas</string>
-    <string name="inicio_btn2" >Mensajes</string>
+    <string name="inicio_btn2">Mensajes</string>
     <string name="inicio_btn3">Contactos</string>
     <string name="title_activity_nuevo_contacto">NuevoContacto</string>
+    <string name="title_activity_lista_contactos">ListaContactosActivity</string>
     <string name="dialog_Title"> Prueba 1</string>
     <string name="dialog_aceptar">Aceptar</string>
     <string name="dialog_cancel">Cancelar</string>
