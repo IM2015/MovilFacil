@@ -13,13 +13,19 @@ import android.widget.Button;
 public class menu_Inicio extends ActionBarActivity {
 
 //public class menu_Inicio extends ActionBarActivity {
-    public FragmentManager fm = getSupportFragmentManager();
+    //public FragmentManager fm = getSupportFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu__inicio);
         Button b = (Button) findViewById(R.id.btnContactos);
-        b.setOnClickListener(new View.OnClickListener(){
+        b.setOnClickListener(new View.OnClickListener() {
+                                 @Override
+                                 public void onClick(View v){
+                                     Intent i = new Intent(v.getContext(),ListaContactosActivity.class);
+                                     startActivity(i);
+                                 }
+                             });
 
         Button btnLlamadas = (Button) findViewById(R.id.button2);
         btnLlamadas.setOnClickListener(new View.OnClickListener(){
@@ -34,6 +40,7 @@ public class menu_Inicio extends ActionBarActivity {
 
         Button btnMensajes = (Button) findViewById(R.id.button3);
         btnMensajes.setOnClickListener(new View.OnClickListener(){
+            @Override
             public void onClick(View v){
                 Intent intent = new Intent(v.getContext(),MenuMensajes.class);
                 startActivityForResult(intent,0);
@@ -41,14 +48,15 @@ public class menu_Inicio extends ActionBarActivity {
         });
 
 
-        Button btnContactos = (Button) findViewById(R.id.button);
+        /*Button btnContactos = (Button) findViewById(R.id.button);
         btnContactos.setOnClickListener(new View.OnClickListener(){
+             @Override
             public void onClick(View v){
                 popupContactos Popup1 = new popupContactos();
                 Popup1.show(fm, "Dialog Fragment");
 
             }
-        });
+        });*/
 
 
 

@@ -2,6 +2,8 @@ package com.im2015.movilfacil;
 
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
+import android.content.Intent;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 
@@ -18,38 +21,35 @@ public class ListaContactosActivity extends ActionBarActivity {
     private ListView listView;
     private ProgressDialog progressDialog;
     private ContentResolver cr;
-
+    private FragmentManager fm = getSupportFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         cr = getContentResolver();
         cr.acquireContentProviderClient("");
-        // Display a indeterminate progress bar on title bar
-        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-
         setContentView(R.layout.activity_lista_contactos);
         this.listView = (ListView) findViewById(R.id.listViewContactos);
         Contactos c= new Contactos(cr);
-        // Sets the data behind this ListView
         this.listView.setAdapter(new ItemAdapter(this,c.getContactos()));
-/*
-        // Register a callback to be invoked when an item in this AdapterView
-// has been clicked
+
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view,
                                     int position, long arg) {
-// Sets the visibility of the indeterminate progress bar in the
-// title
-                setProgressBarIndeterminateVisibility(true);
-// Show progress dialog
-                progressDialog = ProgressDialog.show(ListaContactosActivity.this,
-                        "ProgressDialog", "Loading!");
-
+            popupContactos Popup1 = new popupContactos();
+            Popup1.show(fm, "Dialog Fragment");
             }
-        });*/
-        //parte de fabian
+        });
 
+        Button addConctact =(Button) findViewById(R.id.btnAgregarContacto);
+        addConctact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(),NuevoContacto.class);
+                startActivity(i);
+            }
+        });
     }
 
 
