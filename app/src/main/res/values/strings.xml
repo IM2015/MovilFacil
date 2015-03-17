@@ -4,7 +4,6 @@
     <string name="app_name">MovilFacil</string>
     <string name="title_activity_menu_inicio">MenuInicioActivity</string>
     <string name="title_activity_menu_llamadas">MenuInicioActivity</string>
-
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_llamadas">Llamadas</string>
@@ -13,6 +12,7 @@
     <string name="inicio_btn1">Llamadas</string>
     <string name="inicio_btn2" >Mensajes</string>
     <string name="inicio_btn3">Contactos</string>
+    <string name="title_activity_nuevo_contacto">NuevoContacto</string>
     <string name="dialog_Title"> Prueba 1</string>
     <string name="dialog_aceptar">Aceptar</string>
     <string name="dialog_cancel">Cancelar</string>
