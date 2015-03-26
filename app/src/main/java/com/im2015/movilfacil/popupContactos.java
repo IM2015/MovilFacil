@@ -25,9 +25,10 @@ public class popupContactos extends DialogFragment {
         builder.setTitle(R.string.dialog_contacts_title)
                 .setItems(titulos , new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-
+                       
                     }});
         // Create the AlertDialog object and return it
         return builder.create();
     }
+
 }

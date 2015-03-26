@@ -50,6 +50,35 @@ public class Contactos {
             e.printStackTrace();
         }
     }
+    public  void eliminarContacto(Contacto c) {
+        ArrayList<ContentProviderOperation> comandosBorrar = new ArrayList<ContentProviderOperation>();
+        comandosBorrar.add(ContentProviderOperation.newDelete(ContactsContract.RawContacts.CONTENT_URI)
+                        .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
+                        .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
+                        .build()
+        );
+        comandosBorrar.add(ContentProviderOperation.newDelete(ContactsContract.Data.CONTENT_URI)
+                        .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                        .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
+                        .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, c.getNombre() )
+                        .build()
+        );
+        comandosBorrar.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                        .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                        .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
+                        .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, c.getNumero())
+                        .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_HOME)
+                        .build()
+        );
+
+        try {
+            cr.applyBatch(ContactsContract.AUTHORITY, comandosBorrar);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (OperationApplicationException e) {
+            e.printStackTrace();
+        }
+    }
     public List<Contacto> getContactos(){
         List<Contacto> l = new ArrayList<Contacto>();
 
