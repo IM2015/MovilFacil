@@ -84,16 +84,17 @@ public class Contactos {
 
         Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
         String[] projection    = new String[] {ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
-                ContactsContract.CommonDataKinds.Phone.NUMBER};
+                ContactsContract.CommonDataKinds.Phone.NUMBER,
+                ContactsContract.CommonDataKinds.Phone._ID};
 
         Cursor people = cr.query(uri, projection, null, null, null);
 
         int indexName = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
         int indexNumber = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
-
+        int indexId=people.getColumnIndex(ContactsContract.CommonDataKinds.Phone._ID);
         people.moveToFirst();
         do {
-            l.add(new Contacto(people.getString(indexName),people.getString(indexNumber)));
+            l.add(new Contacto(people.getString(indexId),people.getString(indexName),people.getString(indexNumber)));
             // Do work...
         } while (people.moveToNext());
         return l;

@@ -5,6 +5,7 @@ package com.im2015.movilfacil;
  */
 
 import android.app.*;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -25,7 +26,9 @@ public class popupContactos extends DialogFragment {
         builder.setTitle(R.string.dialog_contacts_title)
                 .setItems(titulos , new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                       
+                        Context context = getActivity().getApplicationContext();
+                        Contactos contactos = new Contactos(context.getContentResolver());
+                        //contactos.eliminarContacto();
                     }});
         // Create the AlertDialog object and return it
         return builder.create();
