@@ -12,7 +12,7 @@ public class Contacto {
 
     public Contacto(String id, String nombre, String numero) {
         this.id = id;
-        this.nombre = nombre;
+        this.nombre = nombre+id;
         this.numero = numero;
     }
 

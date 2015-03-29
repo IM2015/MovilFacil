@@ -28,7 +28,7 @@ public class popupContactos extends DialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         Context context = getActivity().getApplicationContext();
                         Contactos contactos = new Contactos(context.getContentResolver());
-                        //contactos.eliminarContacto();
+                        contactos.eliminarContacto(new Contacto("2","a","111"));
                     }});
         // Create the AlertDialog object and return it
         return builder.create();
