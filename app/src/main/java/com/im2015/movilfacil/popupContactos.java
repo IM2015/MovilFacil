@@ -23,15 +23,24 @@ public class popupContactos extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(R.string.dialog_contacts_title)
-                .setItems(titulos , new DialogInterface.OnClickListener() {
+        builder.setTitle(R.string.dialog_contacts_title);
+        builder.setItems(titulos , new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Context context = getActivity().getApplicationContext();
-                        Contactos contactos = new Contactos(context.getContentResolver());
-                        contactos.eliminarContacto(new Contacto("2","a","111"));
+                        switch (which){
+                            case 0:
+                                new IntentManager(getActivity()).llamar("941226497");
+                                break;
+                            case 3:
+                                Context context = getActivity().getApplicationContext();
+                                Contactos contactos = new Contactos(context.getContentResolver());
+                                contactos.eliminarContacto(new Contacto("2","a","111"));
+                                break;
+                        }
+
                     }});
         // Create the AlertDialog object and return it
-        return builder.create();
+       AlertDialog al = builder.create();
+       return al;
     }
 
 }

@@ -1,9 +1,15 @@
 package com.im2015.movilfacil;
 
+import android.content.ContentResolver;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import java.util.List;
 
 
 public class RegistroDeLlamadas extends ActionBarActivity {
@@ -12,6 +18,22 @@ public class RegistroDeLlamadas extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_de_llamadas);
+        ContentResolver cr = getContentResolver();
+        ListView listView = (ListView) findViewById(R.id.listViewContactos);
+        Llamadas llamadas = new Llamadas(cr);
+        List<Llamada> l = llamadas.getLlamadas();
+        listView.setAdapter(new LlamadaAdapter(this,l));
+
+
+       /* listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View view,
+                                    int position, long arg) {
+                popupContactos Popup1 = new popupContactos();
+                Popup1.show(fm, "Dialog Fragment");
+            }
+        });*/
+
     }
 
 

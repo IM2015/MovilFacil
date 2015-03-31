@@ -7,9 +7,9 @@ import android.net.Uri;
 /**
  * Created by Carlos on 30/03/2015.
  */
-public class ActionContacto {
+public class IntentManager {
     private Activity a;
-    public ActionContacto(Activity act){
+    public IntentManager(Activity act){
         a = act;
     }
     public void llamar(String telefono){
@@ -17,4 +17,9 @@ public class ActionContacto {
         callIntent.setData(Uri.parse("tel:"+telefono));
         a.startActivity(callIntent);
     }
+    public void llamar(){
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        a.startActivity(intent);
+    }
+
 }

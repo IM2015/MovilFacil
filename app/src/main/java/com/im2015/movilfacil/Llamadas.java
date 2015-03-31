@@ -18,7 +18,7 @@ public class Llamadas {
     public Llamadas(ContentResolver cr){
         this.cr = cr;
     }
-    public List<Llamada> getContactos(){
+    public List<Llamada> getLlamadas(){
         List<Llamada> l = new ArrayList<Llamada>();
 
         Uri uri = CallLog.Calls.CONTENT_URI;
