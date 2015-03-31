@@ -5,6 +5,7 @@ package com.im2015.movilfacil;
  */
 
 import android.app.*;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -33,15 +34,25 @@ public class popupContactos extends DialogFragment {
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.dialog_contacts_title)
-                .setItems(titulos, new DialogInterface.OnClickListener() {
+                .setItems(titulos , new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        PopUpFavoritos pfavs= new PopUpFavoritos();
-                        pfavs.show(getFragmentManager(),"PopUpFavs");
-                    }
-                });
+                        switch (which){
+                            case 0:
+                                new IntentManager(getActivity()).llamar("941226497");
+                                break;
+                            case 3:
+                                Context context = getActivity().getApplicationContext();
+                                Contactos contactos = new Contactos(context.getContentResolver());
+                                contactos.eliminarContacto(new Contacto("2","a","111"));
+                                break;
+                            case 4:
+                                PopUpFavoritos pfavs= new PopUpFavoritos();
+                                pfavs.show(getFragmentManager(),"PopUpFavs");
+                                break;
+                        }
+
+                    }});
         // Create the AlertDialog object and return it
         return builder.create();
     }
-
-
 }
