@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -38,6 +37,7 @@ public class ListaContactosActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> adapter, View view,
                                     int position, long arg) {
             popupContactos Popup1 = new popupContactos();
+            //AÑADIR PARÁMETRO ID DE DONCTACTO AL POPUP
             Popup1.show(fm, "Dialog Fragment");
             }
         });
