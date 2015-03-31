@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.util.List;
 
 
 public class ListaContactosActivity extends ActionBarActivity {
@@ -21,6 +22,8 @@ public class ListaContactosActivity extends ActionBarActivity {
     private ProgressDialog progressDialog;
     private ContentResolver cr;
     private FragmentManager fm = getSupportFragmentManager();
+    private List<Contacto> list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,16 +32,24 @@ public class ListaContactosActivity extends ActionBarActivity {
         setContentView(R.layout.activity_lista_contactos);
         this.listView = (ListView) findViewById(R.id.listViewContactos);
         Contactos c= new Contactos(cr);
-        this.listView.setAdapter(new ItemAdapter(this,c.getContactos()));
+        this.list = c.getContactos();
+        this.listView.setAdapter(new ItemAdapter(this,list));
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view,
                                     int position, long arg) {
-            popupContactos Popup1 = new popupContactos();
-            //AÑADIR PARÁMETRO ID DE DONCTACTO AL POPUP
-            Popup1.show(fm, "Dialog Fragment");
+                Contacto c = (Contacto) adapter.getItemAtPosition(position);
+
+                popupContactos Popup1 = new popupContactos();
+                Bundle b = new Bundle();
+
+                b.putString("id",c.getId());
+                b.putString("nombre",c.getNombre());
+                b.putString("numero",c.getNumero());
+                Popup1.setArguments(b);
+                Popup1.show(fm, "Dialog Fragment");
             }
         });
 

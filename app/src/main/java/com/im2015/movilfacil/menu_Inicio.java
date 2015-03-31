@@ -30,7 +30,7 @@ public class menu_Inicio extends ActionBarActivity {
         Button btnLlamadas = (Button) findViewById(R.id.button2);
         btnLlamadas.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent i = new Intent(v.getContext(),ListaContactosActivity.class);
+                Intent i = new Intent(v.getContext(),RegistroDeLlamadas.class);
                 startActivity(i);
             }
         });

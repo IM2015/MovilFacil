@@ -19,6 +19,7 @@ public class popupContactos extends DialogFragment {
             "Eliminar",
             "Añadir a favoritos"
     };
+    private Contacto contacto;
 
     static popupContactos newInstance(String idContacto){
         popupContactos vEmergente = new popupContactos();
@@ -32,26 +33,36 @@ public class popupContactos extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
+         Bundle args = this.getArguments();
+         String id = args.getString("id");
+         String nombre = args.getString("nombre");
+         String numero = args.getString("numero");
+        this.contacto = new Contacto(id,nombre,numero);
+
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.dialog_contacts_title)
-                .setItems(titulos , new DialogInterface.OnClickListener() {
+                .setItems(titulos, new DialogInterface.OnClickListener() {
+
                     public void onClick(DialogInterface dialog, int which) {
-                        switch (which){
+
+                        switch (which) {
                             case 0:
-                                new IntentManager(getActivity()).llamar("941226497");
+                                new IntentManager(getActivity()).llamar(contacto.getNumero());
                                 break;
                             case 3:
                                 Context context = getActivity().getApplicationContext();
                                 Contactos contactos = new Contactos(context.getContentResolver());
-                                contactos.eliminarContacto(new Contacto("2","a","111"));
+                                contactos.eliminarContacto(contacto);
                                 break;
                             case 4:
-                                PopUpFavoritos pfavs= new PopUpFavoritos();
-                                pfavs.show(getFragmentManager(),"PopUpFavs");
+                                PopUpFavoritos pfavs = new PopUpFavoritos();
+                                pfavs.show(getFragmentManager(), "PopUpFavs");
                                 break;
                         }
 
-                    }});
+                    }
+                });
         // Create the AlertDialog object and return it
         return builder.create();
     }

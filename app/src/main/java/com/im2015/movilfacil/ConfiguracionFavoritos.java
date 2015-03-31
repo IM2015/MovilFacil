@@ -33,17 +33,17 @@ public class ConfiguracionFavoritos {
         return getSettings().getString(KEY_FAV3, null);
     }
     public void setFav1(String id){
-        SharedPreferences.Editor editor = geSettings().edit();
+        SharedPreferences.Editor editor = getSettings().edit();
         editor.putString(KEY_FAV1, id );
         editor.commit();
     }
     public void setFav2(String id){
-        SharedPreferences.Editor editor = geSettings().edit();
+        SharedPreferences.Editor editor = getSettings().edit();
         editor.putString(KEY_FAV2, id );
         editor.commit();
     }
     public void setFav3(String id){
-        SharedPreferences.Editor editor = geSettings().edit();
+        SharedPreferences.Editor editor = getSettings().edit();
         editor.putString(KEY_FAV3, id );
         editor.commit();
     }
