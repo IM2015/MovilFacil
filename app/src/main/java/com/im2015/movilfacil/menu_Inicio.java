@@ -17,6 +17,7 @@ public class menu_Inicio extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //new Contactos(getApplicationContext().getContentResolver()).eliminarContacto(new Contacto("1","1","1"));
         setContentView(R.layout.activity_menu__inicio);
         Button b = (Button) findViewById(R.id.btnContactos);
         b.setOnClickListener(new View.OnClickListener() {

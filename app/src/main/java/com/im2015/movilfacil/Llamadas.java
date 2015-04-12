@@ -7,6 +7,7 @@ import android.provider.CallLog;
 import android.provider.ContactsContract;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,13 +23,21 @@ public class Llamadas {
         List<Llamada> l = new ArrayList<Llamada>();
 
         Uri uri = CallLog.Calls.CONTENT_URI;
-        String[] projection    = new String[] {CallLog.Calls.NUMBER};
+        String[] projection    = new String[] {CallLog.Calls.NUMBER,CallLog.Calls.DATE,CallLog.Calls.DURATION,CallLog.Calls.TYPE};
 
-        Cursor cLlamadas = cr.query(uri, projection, null, null, null);
+        Cursor cLlamadas = cr.query(uri, projection, null, null, CallLog.Calls.DATE + " DESC");
         int indexNumber = cLlamadas.getColumnIndex(CallLog.Calls.NUMBER);
+        int indexDate = cLlamadas.getColumnIndex(CallLog.Calls.DATE);
+        int indexDuration = cLlamadas.getColumnIndex(CallLog.Calls.DURATION);
+        int indexType= cLlamadas.getColumnIndex(CallLog.Calls.TYPE);
+
         cLlamadas.moveToFirst();
         do {
-            l.add(new Llamada(cLlamadas.getString(indexNumber)));
+            String number = cLlamadas.getString(indexNumber);
+            Date date = new Date(cLlamadas.getLong(indexDate));
+            int duration = cLlamadas.getInt(indexDuration);
+            int type = cLlamadas.getInt(indexType);
+            l.add(new Llamada(number,date,duration,type));
         } while (cLlamadas.moveToNext());
         return l;
     }

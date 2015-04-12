@@ -19,6 +19,8 @@ import java.util.List;
  */
 public class Contactos {
     ContentResolver cr;
+    private List<Contacto> lc;
+
     public Contactos(ContentResolver contentResolver){
         cr=contentResolver;
     }
@@ -52,12 +54,21 @@ public class Contactos {
         }
     }
     public  void eliminarContacto(Contacto c) {
-        String condicion = ContactsContract.CommonDataKinds.Phone._ID + " = ?";
+        String condicion = ContactsContract.Data._ID + "=?";
         String [] arg = new String[1];
         arg[0]=c.getId();
-        Log.v("eliminados", cr.delete(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                condicion,
-                arg)+"");
+        ArrayList<ContentProviderOperation> ops =
+                new ArrayList<ContentProviderOperation>();
+        ops.add(ContentProviderOperation.newDelete(ContactsContract.Data.CONTENT_URI)
+                .withSelection(condicion, arg)
+                .build());
+        try {
+            cr.applyBatch(ContactsContract.AUTHORITY,ops);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (OperationApplicationException e) {
+            e.printStackTrace();
+        }
 
     }
     public List<Contacto> getContactos(){
@@ -79,5 +90,19 @@ public class Contactos {
             // Do work...
         } while (people.moveToNext());
         return l;
+    }
+    /*
+    * input telefono
+    * Contacto con ese telefono
+    * null en caso de que no exista
+     */
+    public Contacto getContactoPorTelefono(String tel){
+        if(lc == null) lc = this.getContactos();
+        for(int i = 0;i<lc.size();i++){
+            if(lc.get(i).getNumero().equals(tel)){
+                return lc.get(i);
+            }
+        }
+        return null;
     }
 }
