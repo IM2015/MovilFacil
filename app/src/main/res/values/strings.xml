@@ -19,5 +19,6 @@
     <string name="dialog_cancel">Cancelar</string>
     <string name="dialog_contacts_title"> Elige una opcion</string>
     <string name="title_activity_registro_de_llamadas">RegistroDeLlamadas</string>
+    <string name="title_activity_menssage_box">Mensajes</string>
 
 </resources>
