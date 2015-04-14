@@ -20,5 +20,8 @@
     <string name="dialog_contacts_title"> Elige una opcion</string>
     <string name="title_activity_registro_de_llamadas">RegistroDeLlamadas</string>
     <string name="title_activity_menssage_box">Mensajes</string>
+    <string name="title_activity_editar_contacto">Editar Contacto</string>
+    <string name="EiditarContactoNombre">Nombre del nuevo contacto</string>
+    <string name="EditarContactoNombre">Nombre del contacto</string>
 
 </resources>

@@ -56,6 +56,10 @@
             android:name=".MenssageBox"
             android:label="@string/title_activity_menssage_box" >
         </activity>
+        <activity
+            android:name=".editarContacto"
+            android:label="@string/title_activity_editar_contacto" >
+        </activity>
     </application>
 
 </manifest>
