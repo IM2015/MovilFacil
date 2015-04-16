@@ -1,17 +1,56 @@
 package com.im2015.movilfacil;
 
+import android.content.ContentResolver;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 
 public class editarContacto extends ActionBarActivity {
-
+    ContentResolver cr;
+    Contacto contacto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_contacto);
+        cr = getContentResolver();
+        //cr.acquireContentProviderClient(""); Ni idea de esto
+        Bundle args = getIntent().getExtras();
+        String id = args.getString("id");
+        String nombre = args.getString("nombre");
+        String numero = args.getString("numero");
+        contacto = new Contacto(id,nombre,numero);
+
+        Button b = (Button) findViewById(R.id.buttonGuardar);
+        View.OnClickListener ol = new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View v) {
+
+                EditText etNombre = (EditText) editarContacto.this.findViewById(R.id.editTextNombre);
+                EditText etNumero = (EditText) editarContacto.this.findViewById(R.id.editTextNumero);
+                Contactos c = (new Contactos(cr));
+                c.editarContacto(
+                        contacto,
+                        etNombre.getText().toString(),
+                        etNumero.getText().toString()
+                );
+            }
+        };
+        b.setOnClickListener(ol);
+        Button b1 = (Button) findViewById(R.id.buttonCancelar);
+        View.OnClickListener ol1 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               finish();
+            }
+        };
+        b1.setOnClickListener(ol1);
     }
 
 

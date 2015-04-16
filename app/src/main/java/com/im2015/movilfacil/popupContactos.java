@@ -7,6 +7,7 @@ package com.im2015.movilfacil;
 import android.app.*;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
@@ -49,6 +50,18 @@ public class popupContactos extends DialogFragment {
                         switch (which) {
                             case 0:
                                 new IntentManager(getActivity()).llamar(contacto.getNumero());
+                                break;
+                            case 2:
+                                Intent i = new Intent(getActivity(),editarContacto.class);
+
+                                Bundle b = new Bundle();
+
+                                b.putString("id",contacto.getId());
+                                b.putString("nombre",contacto.getNombre());
+                                b.putString("numero",contacto.getNumero());
+                                editarContacto ec = new editarContacto();
+                                i.putExtras(b);
+                                startActivity(i);
                                 break;
                             case 3:
                                 Context context = getActivity().getApplicationContext();
