@@ -24,7 +24,10 @@ public class editarContacto extends ActionBarActivity {
         String nombre = args.getString("nombre");
         String numero = args.getString("numero");
         contacto = new Contacto(id,nombre,numero);
-
+        EditText etNombre = (EditText) editarContacto.this.findViewById(R.id.editTextNombre);
+        EditText etNumero = (EditText) editarContacto.this.findViewById(R.id.editTextNumero);
+        etNombre.setText(nombre);
+        etNumero.setText(numero);
         Button b = (Button) findViewById(R.id.buttonGuardar);
         View.OnClickListener ol = new View.OnClickListener() {
 
