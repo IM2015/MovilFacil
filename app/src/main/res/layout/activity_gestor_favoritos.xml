@@ -1,0 +1,137 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.im2015.movilfacil.GestorFavoritos">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Antonio"
+        android:id="@+id/tvFav1Nom"
+        android:layout_marginTop="122dp"
+        android:layout_marginLeft="59dp"
+        android:layout_marginStart="59dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="678412578"
+        android:id="@+id/tvFav1Tfno"
+        android:layout_below="@+id/tvFav1Nom"
+        android:layout_alignLeft="@+id/tvFav1Nom"
+        android:layout_alignStart="@+id/tvFav1Nom" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ibEliminar1"
+        android:layout_alignBottom="@+id/tvFav1Tfno"
+        android:layout_toLeftOf="@+id/tvFav1Tfno"
+        android:layout_toStartOf="@+id/tvFav1Tfno"
+        android:src="@drawable/remove11" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ibBajarFav1"
+        android:layout_alignTop="@+id/ibEliminar1"
+        android:layout_toRightOf="@+id/tvFav1Tfno"
+        android:layout_toEndOf="@+id/tvFav1Tfno"
+        android:src="@drawable/arrow483" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="María"
+        android:id="@+id/tvFav2Nom"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/ibEliminar1"
+        android:layout_toEndOf="@+id/ibEliminar1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="678542159"
+        android:id="@+id/tvFav2Tfno"
+        android:layout_below="@+id/tvFav2Nom"
+        android:layout_toRightOf="@+id/ibEliminar1"
+        android:layout_toEndOf="@+id/ibEliminar1" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ibEliminar2"
+        android:layout_alignTop="@+id/tvFav2Nom"
+        android:layout_toLeftOf="@+id/tvFav2Nom"
+        android:layout_toStartOf="@+id/tvFav2Nom"
+        android:src="@drawable/remove11" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ibSubirFav2"
+        android:layout_alignBottom="@+id/tvFav2Nom"
+        android:layout_toRightOf="@+id/tvFav2Tfno"
+        android:layout_toEndOf="@+id/tvFav2Tfno"
+        android:src="@drawable/navigate6" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ibBajarFav2"
+        android:layout_alignTop="@+id/tvFav2Tfno"
+        android:layout_toRightOf="@+id/tvFav2Tfno"
+        android:layout_toEndOf="@+id/tvFav2Tfno"
+        android:src="@drawable/arrow483" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Fernando"
+        android:id="@+id/tvFav3Nom"
+        android:layout_below="@+id/ibBajarFav2"
+        android:layout_toRightOf="@+id/ibEliminar2"
+        android:layout_toEndOf="@+id/ibEliminar2"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="645123753"
+        android:id="@+id/tvFav3Tfno"
+        android:layout_below="@+id/tvFav3Nom"
+        android:layout_toRightOf="@+id/ibEliminar2"
+        android:layout_toEndOf="@+id/ibEliminar2" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ibEliminar3"
+        android:layout_alignTop="@+id/tvFav3Nom"
+        android:layout_toLeftOf="@+id/tvFav3Nom"
+        android:layout_toStartOf="@+id/tvFav3Nom"
+        android:src="@drawable/remove11" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ibSubirFav3"
+        android:src="@drawable/navigate6"
+        android:layout_alignBottom="@+id/tvFav3Tfno"
+        android:layout_toRightOf="@+id/tvFav3Nom"
+        android:layout_toEndOf="@+id/tvFav3Nom" />
+
+
+</RelativeLayout>

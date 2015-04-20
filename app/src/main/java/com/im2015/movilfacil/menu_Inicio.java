@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 
 public class menu_Inicio extends ActionBarActivity {
@@ -19,6 +20,14 @@ public class menu_Inicio extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         //new Contactos(getApplicationContext().getContentResolver()).eliminarContacto(new Contacto("1","1","1"));
         setContentView(R.layout.activity_menu__inicio);
+        ImageButton bFavs= (ImageButton) findViewById(R.id.ibGestionFavs);
+        bFavs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(v.getContext(),GestorFavoritos.class);
+                startActivity(i);
+            }
+        });
         Button b = (Button) findViewById(R.id.btnContactos);
         b.setOnClickListener(new View.OnClickListener() {
                                  @Override

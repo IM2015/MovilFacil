@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -49,6 +50,14 @@
         <activity
             android:name=".RegistroDeLlamadas"
             android:label="@string/title_activity_registro_de_llamadas" >
+        </activity>
+        <activity
+            android:name=".GestorFavoritos"
+            android:label="@string/title_activity_gestor_favoritos"
+            android:parentActivityName=".menu_Inicio" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.im2015.movilfacil.menu_Inicio" />
         </activity>
     </application>
 
