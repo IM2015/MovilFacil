@@ -53,6 +53,9 @@ public class Contactos {
             e.printStackTrace();
         }
     }
+    /*
+    Eimina contacto de la lista en memoria y de la BD
+     */
     public  void eliminarContacto(Contacto c) {
         String condicion = ContactsContract.Data._ID + "=?";
         String [] arg = new String[1];
@@ -64,6 +67,7 @@ public class Contactos {
                 .build());
         try {
             cr.applyBatch(ContactsContract.AUTHORITY,ops);
+            if(lc != null)lc.remove(getContactoPosicion(c.getId()));
         } catch (RemoteException e) {
             e.printStackTrace();
         } catch (OperationApplicationException e) {
@@ -105,4 +109,27 @@ public class Contactos {
         }
         return null;
     }
+    /*
+    * input telefono
+    * Contacto con ese telefono
+    * null en caso de que no exista
+     */
+    public int getContactoPosicion(String id){
+        if(lc == null) lc = this.getContactos();
+        for(int i = 0;i<lc.size();i++){
+            if(lc.get(i).getId().equals(id)){
+                return i;
+            }
+        }
+        return -1;
+    }
+    /*
+    Editar Contacto
+    input: Contacto viejo, Contacto nuevo
+     */
+    public void editarContacto(Contacto viejo,String nuevoNombre, String nuevoNumero){
+        eliminarContacto(viejo);
+        this.nuevoContacto(nuevoNombre,nuevoNumero);
+    }
+
 }
