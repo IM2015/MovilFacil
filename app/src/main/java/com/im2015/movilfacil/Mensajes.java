@@ -4,6 +4,7 @@ import android.content.ContentResolver;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.Telephony;
+import android.telephony.SmsManager;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,5 +43,10 @@ public class Mensajes {
 
         }
         return l;
+    }
+
+    public void enviar(String numero, String mensaje) {
+        SmsManager smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage(numero, null, mensaje, null, null);
     }
 }

@@ -37,21 +37,15 @@ public class NuevoContacto extends ActionBarActivity {
                         etNombre.getText().toString(),
                         etNumero.getText().toString()
                 );
+                finish();
             }
         };
         b.setOnClickListener(ol);
         Button b1 = (Button) findViewById(R.id.buttonCancelar);
         View.OnClickListener ol1 = new View.OnClickListener() {
-
-
             @Override
             public void onClick(View v) {
-                Contactos c = (new Contactos(cr));
-                Log.i("CONTACTO","");
-                for(Contacto cont : c.getContactos()){
-                    Log.i("CONTACTO",cont.getNombre() +" "+ cont.getNumero());
-                }
-
+                finish();
             }
         };
         b1.setOnClickListener(ol1);

@@ -46,20 +46,33 @@ public class popupContactos extends DialogFragment {
                 .setItems(titulos, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
-
+                        Intent i;
+                        Bundle b;
                         switch (which) {
                             case 0:
                                 new IntentManager(getActivity()).llamar(contacto.getNumero());
                                 break;
-                            case 2:
-                                Intent i = new Intent(getActivity(),editarContacto.class);
+                            case 1:
+                                i = new Intent(getActivity(),EnvioMensaje.class);
 
-                                Bundle b = new Bundle();
+                                b = new Bundle();
 
                                 b.putString("id",contacto.getId());
                                 b.putString("nombre",contacto.getNombre());
                                 b.putString("numero",contacto.getNumero());
-                                editarContacto ec = new editarContacto();
+                                //editarContacto ec = new editarContacto();
+                                i.putExtras(b);
+                                startActivity(i);
+                                break;
+                            case 2:
+                                i = new Intent(getActivity(),editarContacto.class);
+
+                                b = new Bundle();
+
+                                b.putString("id",contacto.getId());
+                                b.putString("nombre",contacto.getNombre());
+                                b.putString("numero",contacto.getNumero());
+                                //editarContacto ec = new editarContacto();
                                 i.putExtras(b);
                                 startActivity(i);
                                 break;
@@ -67,6 +80,7 @@ public class popupContactos extends DialogFragment {
                                 Context context = getActivity().getApplicationContext();
                                 Contactos contactos = new Contactos(context.getContentResolver());
                                 contactos.eliminarContacto(contacto);
+
                                 break;
                             case 4:
                                 PopUpFavoritos pfavs = new PopUpFavoritos();

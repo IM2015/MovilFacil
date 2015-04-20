@@ -43,6 +43,7 @@ public class editarContacto extends ActionBarActivity {
                         etNombre.getText().toString(),
                         etNumero.getText().toString()
                 );
+                finish();
             }
         };
         b.setOnClickListener(ol);
