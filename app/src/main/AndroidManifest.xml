@@ -12,6 +12,9 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
 
     <application
         android:allowBackup="true"
@@ -50,6 +53,18 @@
         <activity
             android:name=".RegistroDeLlamadas"
             android:label="@string/title_activity_registro_de_llamadas" >
+        </activity>
+        <activity
+            android:name=".MenssageBox"
+            android:label="@string/title_activity_menssage_box" >
+        </activity>
+        <activity
+            android:name=".editarContacto"
+            android:label="@string/title_activity_editar_contacto" >
+        </activity>
+        <activity
+            android:name=".EnvioMensaje"
+            android:label="@string/title_activity_envio_mensaje" >
         </activity>
         <activity
             android:name=".GestorFavoritos"

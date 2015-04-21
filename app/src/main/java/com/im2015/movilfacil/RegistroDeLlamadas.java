@@ -1,6 +1,7 @@
 package com.im2015.movilfacil;
 
 import android.content.ContentResolver;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,7 +14,7 @@ import java.util.List;
 
 
 public class RegistroDeLlamadas extends ActionBarActivity {
-
+    private FragmentManager fm = getSupportFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,14 +26,18 @@ public class RegistroDeLlamadas extends ActionBarActivity {
         listView.setAdapter(new LlamadaAdapter(this,l));
 
 
-       /* listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+       listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view,
                                     int position, long arg) {
-                popupContactos Popup1 = new popupContactos();
-                Popup1.show(fm, "Dialog Fragment");
+                Bundle b = new Bundle();
+                Llamada c = (Llamada) adapter.getItemAtPosition(position);
+                b.putString("numero",c.getTelefono());
+                PopupLlamadas pop = new PopupLlamadas();
+                pop.setArguments(b);
+                pop.show(fm, "Dialog Fragment");
             }
-        });*/
+        });
 
     }
 

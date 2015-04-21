@@ -23,7 +23,34 @@ public class ListaContactosActivity extends ActionBarActivity {
     private ContentResolver cr;
     private FragmentManager fm = getSupportFragmentManager();
     private List<Contacto> list;
+    private Contactos c;
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        this.listView = (ListView) findViewById(R.id.listViewContactos);
+        this.list = c.getContactos();
+        this.listView.setAdapter(new ItemAdapter(this,list));
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View view,
+                                    int position, long arg) {
+                Contacto c = (Contacto) adapter.getItemAtPosition(position);
+
+                popupContactos Popup1 = new popupContactos();
+                Bundle b = new Bundle();
+
+                b.putString("id",c.getId());
+                b.putString("nombre",c.getNombre());
+                b.putString("numero",c.getNumero());
+                Popup1.setArguments(b);
+                Popup1.show(fm, "Dialog Fragment");
+            }
+        });
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +58,8 @@ public class ListaContactosActivity extends ActionBarActivity {
         cr.acquireContentProviderClient("");
         setContentView(R.layout.activity_lista_contactos);
         this.listView = (ListView) findViewById(R.id.listViewContactos);
-        Contactos c= new Contactos(cr);
+
+        c = new Contactos(cr);
         this.list = c.getContactos();
         this.listView.setAdapter(new ItemAdapter(this,list));
 

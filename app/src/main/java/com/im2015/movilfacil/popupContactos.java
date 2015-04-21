@@ -7,6 +7,7 @@ package com.im2015.movilfacil;
 import android.app.*;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
@@ -45,15 +46,41 @@ public class popupContactos extends DialogFragment {
                 .setItems(titulos, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
-
+                        Intent i;
+                        Bundle b;
                         switch (which) {
                             case 0:
                                 new IntentManager(getActivity()).llamar(contacto.getNumero());
+                                break;
+                            case 1:
+                                i = new Intent(getActivity(),EnvioMensaje.class);
+
+                                b = new Bundle();
+
+                                b.putString("id",contacto.getId());
+                                b.putString("nombre",contacto.getNombre());
+                                b.putString("numero",contacto.getNumero());
+                                //editarContacto ec = new editarContacto();
+                                i.putExtras(b);
+                                startActivity(i);
+                                break;
+                            case 2:
+                                i = new Intent(getActivity(),editarContacto.class);
+
+                                b = new Bundle();
+
+                                b.putString("id",contacto.getId());
+                                b.putString("nombre",contacto.getNombre());
+                                b.putString("numero",contacto.getNumero());
+                                //editarContacto ec = new editarContacto();
+                                i.putExtras(b);
+                                startActivity(i);
                                 break;
                             case 3:
                                 Context context = getActivity().getApplicationContext();
                                 Contactos contactos = new Contactos(context.getContentResolver());
                                 contactos.eliminarContacto(contacto);
+
                                 break;
                             case 4:
                                 PopUpFavoritos pfavs = new PopUpFavoritos();
