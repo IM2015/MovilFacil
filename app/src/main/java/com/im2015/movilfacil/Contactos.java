@@ -123,6 +123,16 @@ public class Contactos {
         }
         return -1;
     }
+
+    public Contacto getContactoId(String id){
+        if(lc == null) lc = this.getContactos();
+        for(int i = 0;i<lc.size();i++){
+            if(lc.get(i).getId().equals(id)){
+                return lc.get(i);
+            }
+        }
+        return null;
+    }
     /*
     Editar Contacto
     input: Contacto viejo, Contacto nuevo

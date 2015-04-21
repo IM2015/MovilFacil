@@ -36,4 +36,11 @@ public class GestorFavoritos extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void cargarDatos(){
+        ConfiguracionFavoritos cf= new ConfiguracionFavoritos(getApplicationContext());
+        if(cf.getfav1()!=null){
+            Contactos c=
+        }
+    }
 }
