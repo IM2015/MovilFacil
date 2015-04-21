@@ -20,15 +20,7 @@ public class menu_Inicio extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         //new Contactos(getApplicationContext().getContentResolver()).eliminarContacto(new Contacto("1","1","1"));
         setContentView(R.layout.activity_menu__inicio);
-        ImageButton bFavs= (ImageButton) findViewById(R.id.ibGestionFavs);
-        bFavs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent i = new Intent(v.getContext(),GestorFavoritos.class);
-                startActivity(i);
-            }
-        });
-        Button b = (Button) findViewById(R.id.btnContactos);
+        ImageButton b = (ImageButton) findViewById(R.id.btn_contacts_main);
         b.setOnClickListener(new View.OnClickListener() {
                                  @Override
                                  public void onClick(View v){
@@ -37,7 +29,7 @@ public class menu_Inicio extends ActionBarActivity {
                                  }
                              });
 
-        Button btnLlamadas = (Button) findViewById(R.id.button2);
+        ImageButton btnLlamadas = (ImageButton) findViewById(R.id.btn_call_main);
         btnLlamadas.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent i = new Intent(v.getContext(),RegistroDeLlamadas.class);
@@ -46,9 +38,7 @@ public class menu_Inicio extends ActionBarActivity {
         });
 
 
-
-
-        Button btnMensajes = (Button) findViewById(R.id.button3);
+        ImageButton btnMensajes = (ImageButton) findViewById(R.id.btn_message_main);
         btnMensajes.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

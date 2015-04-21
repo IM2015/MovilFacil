@@ -6,96 +6,109 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.im2015.movilfacil.menu_Inicio"
     android:id="@+id/App">
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/inicio_btn3"
-        android:id="@+id/btnContactos"
-        android:layout_marginTop="53dp"
-        android:layout_alignTop="@+id/button4" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/inicio_btn1"
-        android:id="@+id/button2"
-        android:layout_above="@+id/btnContactos"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/inicio_btn2"
-        android:id="@+id/button3"
-        android:layout_alignTop="@+id/button2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button4"
-        android:layout_marginBottom="43dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/button2"
-        android:layout_toStartOf="@+id/button2" />
-
-    <ImageButton
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/ibFav1"
-        android:src="@drawable/user168"
-        android:scaleType="centerInside"
-        android:nestedScrollingEnabled="true"
-        android:layout_marginBottom="190dp"
-        android:layout_above="@+id/btnContactos"
-        android:layout_toStartOf="@+id/button4"
-        android:layout_alignRight="@+id/btnContactos"
-        android:layout_alignEnd="@+id/btnContactos" />
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:orientation="vertical" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:orientation="horizontal" >
+            <ImageButton
+                android:background="@drawable/favorite_shape"
+                android:scaleType="centerInside"
+                android:nestedScrollingEnabled="true"
+                android:layout_width="94dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/btn_favorite_1"
+                android:src="@drawable/favorite_64x"
+                />
+            <ImageButton
+                android:background="@drawable/favorite_shape"
+                android:scaleType="centerInside"
+                android:nestedScrollingEnabled="true"
+                android:layout_width="94dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/btn_favorite_2"
+                android:src="@drawable/favorite_64x"
+                />
+            <ImageButton
+                android:background="@drawable/favorite_shape"
+                android:scaleType="centerInside"
+                android:nestedScrollingEnabled="true"
+                android:layout_width="94dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/btn_favorite_3"
+                android:src="@drawable/favorite_64x"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:orientation="horizontal" >
 
-    <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/ibFav3"
-        android:src="@drawable/user168"
-        android:scaleType="centerInside"
-        android:nestedScrollingEnabled="true"
-        android:layout_alignTop="@+id/ibFav1"
-        android:layout_toEndOf="@+id/ibFav1"
-        android:layout_alignBottom="@+id/ibFav1"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="233dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:orientation="horizontal" >
 
-    <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/ibFav2"
-        android:src="@drawable/user168"
-        android:scaleType="centerInside"
-        android:nestedScrollingEnabled="true"
-        android:layout_alignTop="@+id/ibFav3"
-        android:layout_toLeftOf="@+id/ibFav3"
-        android:layout_toEndOf="@+id/btnContactos"
-        android:layout_alignBottom="@+id/ibFav1" />
+    </LinearLayout>
 
-    <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/horizontalScrollView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/ibFav3" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ibGestionFavs"
-        android:src="@drawable/settings48"
-        android:layout_below="@+id/ibFav3"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:orientation="horizontal" >
+            <ImageButton
+                android:background="@drawable/buttonshape"
+                android:scaleType="centerInside"
+                android:nestedScrollingEnabled="true"
+                android:layout_width="94dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/btn_call_main"
+                android:src="@drawable/phone_64x"
+                />
+            <ImageButton
+                android:background="@drawable/button_shape_contact"
+                android:scaleType="centerInside"
+                android:nestedScrollingEnabled="true"
+                android:layout_width="94dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/btn_contacts_main"
+                android:src="@drawable/user168"
+                />
+            <ImageButton
+                android:background="@drawable/button_shape_message"
+                android:scaleType="centerInside"
+                android:nestedScrollingEnabled="true"
+                android:layout_width="94dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/btn_message_main"
+                android:src="@drawable/message_64x"
+                />
+        </LinearLayout>
 
-</RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+    </RelativeLayout>
