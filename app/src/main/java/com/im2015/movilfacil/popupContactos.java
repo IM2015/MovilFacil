@@ -17,8 +17,7 @@ public class popupContactos extends DialogFragment {
             "Llamar",
             "Mensaje",
             "Editar",
-            "Eliminar",
-            "Añadir a favoritos"
+            "Eliminar"
     };
     private Contacto contacto;
 
@@ -82,10 +81,7 @@ public class popupContactos extends DialogFragment {
                                 contactos.eliminarContacto(contacto);
 
                                 break;
-                            case 4:
-                                PopUpFavoritos pfavs = new PopUpFavoritos();
-                                pfavs.show(getFragmentManager(), "PopUpFavs");
-                                break;
+
                         }
 
                     }

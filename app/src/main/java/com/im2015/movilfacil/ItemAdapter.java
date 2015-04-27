@@ -45,6 +45,7 @@ public class ItemAdapter extends BaseAdapter {
         Contacto item = this.items.get(position);
         tvTitle.setText(item.getNombre());
         tvTfno.setText(item.getNumero());
+
         //ivItem.setImageResource(item.getImagen()); //Cuando añadamos imagenes a los contactos descomentar y quitar src del imageview
         return rowView;
     }

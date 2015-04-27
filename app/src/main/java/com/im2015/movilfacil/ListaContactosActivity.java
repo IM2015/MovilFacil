@@ -2,6 +2,7 @@ package com.im2015.movilfacil;
 
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
@@ -24,7 +25,7 @@ public class ListaContactosActivity extends ActionBarActivity {
     private FragmentManager fm = getSupportFragmentManager();
     private List<Contacto> list;
     private Contactos c;
-
+    private ConfiguracionFavoritos cf;
     @Override
     protected void onResume(){
         super.onResume();
@@ -38,15 +39,38 @@ public class ListaContactosActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> adapter, View view,
                                     int position, long arg) {
                 Contacto c = (Contacto) adapter.getItemAtPosition(position);
+                //Comprobamos si estamos añadiendo un favorito
+                Bundle args = getIntent().getExtras();
+                String numFav = args.getString("NumFav");
 
-                popupContactos Popup1 = new popupContactos();
-                Bundle b = new Bundle();
+                if(numFav!=null){
+                    Intent i= new Intent(getApplicationContext(),GestorFavoritos.class);
+                    switch (numFav) {
+                        case "1":
+                            cf.setFav1(c.getId());
+                            startActivity(i);
+                            break;
+                        case "2":
+                            cf.setFav2(c.getId());
+                            startActivity(i);
+                            break;
+                        case "3":
+                            cf.setFav3(c.getId());
+                            startActivity(i);
+                            break;
 
-                b.putString("id",c.getId());
-                b.putString("nombre",c.getNombre());
-                b.putString("numero",c.getNumero());
-                Popup1.setArguments(b);
-                Popup1.show(fm, "Dialog Fragment");
+                    }
+
+                }else {
+                    popupContactos Popup1 = new popupContactos();
+                    Bundle b = new Bundle();
+
+                    b.putString("id", c.getId());
+                    b.putString("nombre", c.getNombre());
+                    b.putString("numero", c.getNumero());
+                    Popup1.setArguments(b);
+                    Popup1.show(fm, "Dialog Fragment");
+                }
             }
         });
 
@@ -58,7 +82,7 @@ public class ListaContactosActivity extends ActionBarActivity {
         cr.acquireContentProviderClient("");
         setContentView(R.layout.activity_lista_contactos);
         this.listView = (ListView) findViewById(R.id.listViewContactos);
-
+        cf= new ConfiguracionFavoritos(getApplicationContext());
         c = new Contactos(cr);
         this.list = c.getContactos();
         this.listView.setAdapter(new ItemAdapter(this,list));
@@ -69,15 +93,37 @@ public class ListaContactosActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> adapter, View view,
                                     int position, long arg) {
                 Contacto c = (Contacto) adapter.getItemAtPosition(position);
+                //Comprobamos si estamos añadiendo un favorito
+                Bundle args = getIntent().getExtras();
+                String numFav = args.getString("NumFav");
+                if(numFav!=null){
+                    Intent i= new Intent(getApplicationContext(),GestorFavoritos.class);
+                    switch (numFav) {
+                        case "1":
+                            cf.setFav1(c.getId());
+                            startActivity(i);
+                            break;
+                        case "2":
+                            cf.setFav2(c.getId());
+                            startActivity(i);
+                            break;
+                        case "3":
+                            cf.setFav3(c.getId());
+                            startActivity(i);
+                            break;
 
-                popupContactos Popup1 = new popupContactos();
-                Bundle b = new Bundle();
+                    }
 
-                b.putString("id",c.getId());
-                b.putString("nombre",c.getNombre());
-                b.putString("numero",c.getNumero());
-                Popup1.setArguments(b);
-                Popup1.show(fm, "Dialog Fragment");
+                }else {
+                    popupContactos Popup1 = new popupContactos();
+                    Bundle b = new Bundle();
+
+                    b.putString("id", c.getId());
+                    b.putString("nombre", c.getNombre());
+                    b.putString("numero", c.getNumero());
+                    Popup1.setArguments(b);
+                    Popup1.show(fm, "Dialog Fragment");
+                }
             }
         });
 
