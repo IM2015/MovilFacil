@@ -15,9 +15,10 @@ import java.util.List;
  */
 public class Mensajes {
     ContentResolver cr;
-
+    RecividorSMS rsms;
     public Mensajes(ContentResolver cr) {
         this.cr = cr;
+
     }
     public List<Mensaje> getMensajes(){
         List<Mensaje> l = new ArrayList<Mensaje>();
@@ -37,7 +38,10 @@ public class Mensajes {
                 Date date = new Date(cMensajes.getLong(indexDate));
                 String body = cMensajes.getString(indexBody);
                 int type = cMensajes.getInt(indexType);
-                l.add(new Mensaje(body,number,type,date));
+                if(type  == Telephony.Sms.MESSAGE_TYPE_INBOX)
+                    l.add(new Mensaje(body,number,Mensaje.Tipo.recibido,date));
+                if(type  == Telephony.Sms.MESSAGE_TYPE_OUTBOX)
+                    l.add(new Mensaje(body,number,Mensaje.Tipo.enviado,date));
             } while (cMensajes.moveToNext());
         }else{
 

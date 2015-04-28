@@ -8,10 +8,10 @@ import java.util.Date;
 public class Mensaje {
     String texto;
     String telefono;
-    int tipo;
+    Tipo tipo;
     Date date;
 
-    public Mensaje(String texto, String telefono, int tipo, Date date) {
+    public Mensaje(String texto, String telefono, Tipo tipo, Date date) {
         this.texto = texto;
         this.telefono = telefono;
         this.tipo = tipo;
@@ -34,11 +34,11 @@ public class Mensaje {
         this.telefono = telefono;
     }
 
-    public int getTipo() {
+    public Tipo getTipo() {
         return tipo;
     }
 
-    public void setTipo(int tipo) {
+    public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
 
@@ -48,5 +48,8 @@ public class Mensaje {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+    public enum Tipo{
+        recibido,enviado
     }
 }

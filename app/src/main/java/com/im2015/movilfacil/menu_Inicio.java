@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,13 +13,14 @@ import android.widget.ImageButton;
 
 
 public class menu_Inicio extends ActionBarActivity {
-
+    private RecividorSMS recividorSMS;
 //public class menu_Inicio extends ActionBarActivity {
     //public FragmentManager fm = getSupportFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //new Contactos(getApplicationContext().getContentResolver()).eliminarContacto(new Contacto("1","1","1"));
+        this.recividorSMS = new RecividorSMS();
         setContentView(R.layout.activity_menu__inicio);
         ImageButton bFavs= (ImageButton) findViewById(R.id.ibGestionFavs);
         bFavs.setOnClickListener(new View.OnClickListener() {
@@ -92,5 +94,9 @@ public class menu_Inicio extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public RecividorSMS getRecividorSMS() {
+        return recividorSMS;
     }
 }
