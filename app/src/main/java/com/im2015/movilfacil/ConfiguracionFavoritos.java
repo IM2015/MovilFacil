@@ -47,5 +47,20 @@ public class ConfiguracionFavoritos {
         editor.putString(KEY_FAV3, id );
         editor.commit();
     }
+    public void deleteFav1(){
+        SharedPreferences.Editor editor = getSettings().edit();
+        editor.remove(KEY_FAV1);
+        editor.commit();
+    }
+    public void deleteFav2(){
+        SharedPreferences.Editor editor = getSettings().edit();
+        editor.remove(KEY_FAV2);
+        editor.commit();
+    }
+    public void deleteFav3(){
+        SharedPreferences.Editor editor = getSettings().edit();
+        editor.remove(KEY_FAV3);
+        editor.commit();
+    }
 
 }

@@ -133,5 +133,32 @@
         android:layout_toRightOf="@+id/tvFav3Nom"
         android:layout_toEndOf="@+id/tvFav3Nom" />
 
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ibAdd1"
+        android:layout_alignBottom="@+id/ibBajarFav1"
+        android:layout_toRightOf="@+id/ibBajarFav1"
+        android:layout_toEndOf="@+id/ibBajarFav1"
+        android:src="@drawable/add133" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ibAdd2"
+        android:src="@drawable/add133"
+        android:layout_alignTop="@+id/tvFav2Nom"
+        android:layout_toRightOf="@+id/ibSubirFav2"
+        android:layout_toEndOf="@+id/ibSubirFav2" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ibAdd3"
+        android:src="@drawable/add133"
+        android:layout_alignTop="@+id/tvFav3Nom"
+        android:layout_toRightOf="@+id/ibBajarFav2"
+        android:layout_toEndOf="@+id/ibBajarFav2" />
+
 
 </RelativeLayout>
