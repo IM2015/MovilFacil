@@ -22,7 +22,8 @@ public class Mensajes {
     }
     public List<Mensaje> getMensajes(){
         List<Mensaje> l = new ArrayList<Mensaje>();
-        if(android.os.Build.VERSION.SDK_INT >= 19) {
+        l.add(new Mensaje("Texto super de Prueb es largo y duro eso dijo ella","941123456", Mensaje.Tipo.recibido,new Date()));
+        /*if(android.os.Build.VERSION.SDK_INT >= 19) {
             Uri uri = Telephony.Sms.CONTENT_URI;
             String[] projection = new String[]{Telephony.Sms.ADDRESS, Telephony.Sms.DATE, Telephony.Sms.BODY, Telephony.Sms.TYPE};
 
@@ -45,7 +46,7 @@ public class Mensajes {
             } while (cMensajes.moveToNext());
         }else{
 
-        }
+        }*/
         return l;
     }
 

@@ -22,12 +22,12 @@ import java.util.List;
 public class SmsAdapter extends BaseAdapter {
     private Context context;
     private List<Mensaje> items;
-    //private Mensajes mensajes;
+    private Contactos contactos;
     //private RecividorSMS recibidorSMS;
     public SmsAdapter (Context context, List<Mensaje> items) {
         this.context = context;
         this.items = items;
-        //mensajes = new Mensajes(context.getContentResolver());
+        contactos = new Contactos(context.getContentResolver());
         //recibidorSMS = null;
         /*if(android.os.Build.VERSION.SDK_INT < 19){
 
@@ -60,7 +60,7 @@ public class SmsAdapter extends BaseAdapter {
         TextView tvTfno= (TextView) rowView.findViewById(R.id.tvTfno);
         TextView tvDate = (TextView) rowView.findViewById(R.id.tvDate);
         Mensaje item = this.items.get(position);
-        //Mensaje c = new Mensaje("Esto es el contenido de un mensaje de prueba","61237897", Mensaje.Tipo.recibido,new Date());//contactos.getContactoPorTelefono(item.getTelefono());
+        Contacto c = contactos.getContactoPorTelefono(item.getTelefono());//contactos.getContactoPorTelefono(item.getTelefono());
         if(c == null){
             tvTitle.setText(item.getTelefono());
         }else{
@@ -71,12 +71,12 @@ public class SmsAdapter extends BaseAdapter {
 
             ivItem.setImageResource(R.drawable.incoming3);
         }
-        if(item.getTipoLlamada() == Mensaje.Tipo.enviado){
+        if(item.getTipo() == Mensaje.Tipo.enviado){
             ivItem.setImageResource(R.drawable.outgoing3);
         }
         Calendar ahora = Calendar.getInstance();
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(item.getDateLlamada());
+        calendar.setTime(item.getDate());
         int dia = calendar.get(Calendar.DATE);
         int hora = calendar.get(Calendar.HOUR);
         int minuto = calendar.get(Calendar.MINUTE);

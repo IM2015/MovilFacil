@@ -5,10 +5,11 @@
     <ImageView
         android:id="@+id/ivImagen"
         android:layout_width="?android:attr/listPreferredItemHeight"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/user168" />
+        android:src="@drawable/user168"
+        android:layout_alignParentBottom="true" />
     <TextView
         android:id="@+id/tvNombre"
         android:layout_width="fill_parent"
@@ -23,7 +24,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="false"
         android:layout_toRightOf="@id/ivImagen"
-        android:layout_alignParentBottom="true"
         android:layout_alignWithParentIfMissing="false" />
 
     <TextView
@@ -42,7 +42,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/tvTexto"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tvTfno" />
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

@@ -1,17 +1,47 @@
 package com.im2015.movilfacil;
 
+import android.app.ProgressDialog;
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.List;
 
 
 public class MenssageBox extends ActionBarActivity {
-
+    private FragmentManager fm = getSupportFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menssage_box);
+        ContentResolver cr = getContentResolver();
+        ListView listView = (ListView) findViewById(R.id.listViewMensajes);
+        Mensajes Mensajes = new Mensajes(cr);
+        List<Mensaje> l = Mensajes.getMensajes();
+        listView.setAdapter(new SmsAdapter(this,l));
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View view,
+                                    int position, long arg) {
+                Bundle b = new Bundle();
+                Mensaje c = (Mensaje) adapter.getItemAtPosition(position);
+                b.putString("numero",c.getTelefono());
+                PopupLlamadas pop = new PopupLlamadas();
+                pop.setArguments(b);
+                pop.show(fm, "Dialog Fragment");
+            }
+        });
+
     }
 
 
