@@ -6,6 +6,8 @@ import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
 import android.content.OperationApplicationException;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.RemoteException;
 import android.provider.ContactsContract;
@@ -81,17 +83,20 @@ public class Contactos {
         Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
         String[] projection    = new String[] {ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
                 ContactsContract.CommonDataKinds.Phone.NUMBER,
-                ContactsContract.CommonDataKinds.Phone._ID};
+                ContactsContract.CommonDataKinds.Phone._ID,
+                ContactsContract.CommonDataKinds.Phone.PHOTO_ID};
 
         Cursor people = cr.query(uri, projection, null, null, null);
 
         int indexName = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
         int indexNumber = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
         int indexId=people.getColumnIndex(ContactsContract.CommonDataKinds.Phone._ID);
+        int indexPhoto=people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_ID);
         people.moveToFirst();
         do {
-            l.add(new Contacto(people.getString(indexId),people.getString(indexName),people.getString(indexNumber)));
-            // Do work...
+
+            l.add(new Contacto(people.getString(indexId),people.getString(indexName),people.getString(indexNumber),getFotoBitmap(people.getInt(indexPhoto))));
+
         } while (people.moveToNext());
         return l;
     }
@@ -140,6 +145,26 @@ public class Contactos {
     public void editarContacto(Contacto viejo,String nuevoNombre, String nuevoNumero){
         eliminarContacto(viejo);
         this.nuevoContacto(nuevoNombre,nuevoNumero);
+    }
+    private Bitmap getFotoBitmap(int imageDataRow) {
+        Cursor c =  cr.query(ContactsContract.Data.CONTENT_URI, new String[] {
+                ContactsContract.CommonDataKinds.Photo.PHOTO
+        }, ContactsContract.Data._ID + "=?", new String[] {
+                Integer.toString(imageDataRow)
+        }, null);
+        byte[] imageBytes = null;
+        if (c != null) {
+            if (c.moveToFirst()) {
+                imageBytes = c.getBlob(0);
+            }
+            c.close();
+        }
+
+        if (imageBytes != null) {
+            return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+        } else {
+            return null;
+        }
     }
 
 }

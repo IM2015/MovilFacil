@@ -41,9 +41,10 @@ public class ListaContactosActivity extends ActionBarActivity {
                 Contacto c = (Contacto) adapter.getItemAtPosition(position);
                 //Comprobamos si estamos añadiendo un favorito
                 Bundle args = getIntent().getExtras();
-                String numFav = args.getString("NumFav");
 
-                if(numFav!=null){
+
+                if(args!=null){
+                    String numFav = args.getString("NumFav");
                     Intent i= new Intent(getApplicationContext(),GestorFavoritos.class);
                     switch (numFav) {
                         case "1":

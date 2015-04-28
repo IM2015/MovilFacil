@@ -1,6 +1,8 @@
 package com.im2015.movilfacil;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +47,10 @@ public class ItemAdapter extends BaseAdapter {
         Contacto item = this.items.get(position);
         tvTitle.setText(item.getNombre());
         tvTfno.setText(item.getNumero());
-
+        Bitmap foto= item.getFoto();
+        if(foto!=null){
+            ivItem.setImageBitmap(foto);
+        }
         //ivItem.setImageResource(item.getImagen()); //Cuando añadamos imagenes a los contactos descomentar y quitar src del imageview
         return rowView;
     }
