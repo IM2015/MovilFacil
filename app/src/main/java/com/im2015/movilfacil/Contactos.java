@@ -69,7 +69,7 @@ public class Contactos {
                 .build());
         try {
             cr.applyBatch(ContactsContract.AUTHORITY,ops);
-            if(lc != null)lc.remove(getContactoPosicion(c.getId()));
+            //if(lc != null)lc.remove(getContactoPosicion(c.getId()));
         } catch (RemoteException e) {
             e.printStackTrace();
         } catch (OperationApplicationException e) {
