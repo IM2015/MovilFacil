@@ -5,33 +5,69 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.im2015.movilfacil.MenuMensajes">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:orientation="vertical" >
     <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
         android:id="@+id/imageButton"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
         android:src="@drawable/email106" />
 
     <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
         android:id="@+id/imageButton2"
-        android:layout_below="@+id/imageButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:src="@drawable/envelope48" />
 
     <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
         android:id="@+id/imageButton3"
-        android:layout_below="@+id/imageButton2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:src="@drawable/arrowhead7" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:orientation="horizontal" >
+        <ImageButton
+            android:background="@drawable/button_shape_message"
+            android:scaleType="centerInside"
+            android:nestedScrollingEnabled="true"
+            android:layout_width="94dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/btn_call_main"
+            android:src="@drawable/new_message_64x"
+            android:text="new message"
+            android:textColor="#FFFFFF"
+            />
+        <ImageButton
+            android:background="@drawable/button_shape_contact"
+            android:scaleType="centerInside"
+            android:nestedScrollingEnabled="true"
+            android:layout_width="94dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/btn_contcts_main"
+            android:src="@drawable/user168"
+            />
+        <ImageButton
+            android:background="@drawable/button_shape_message"
+            android:scaleType="centerInside"
+            android:nestedScrollingEnabled="true"
+            android:layout_width="94dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/btn_message_main"
+            android:src="@drawable/envelope48"
+            />
+    </LinearLayout>
+
+
+
+</LinearLayout>
+
 </RelativeLayout>

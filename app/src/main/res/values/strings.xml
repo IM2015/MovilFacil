@@ -2,22 +2,23 @@
 <resources>
 
     <string name="app_name">MovilFacil</string>
-    <string name="title_activity_menu_inicio">MenuInicioActivity</string>
-    <string name="title_activity_menu_llamadas">MenuInicioActivity</string>
+    <string name="title_activity_menu_inicio">Home</string>
+    <string name="title_activity_menu_llamadas">Calls Menu</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_llamadas">Llamadas</string>
-    <string name="title_activity_menu_mensajes">MenuMensajes</string>
-    <string name="title_activity_menu__inicio">Inicio</string>
-    <string name="inicio_btn1">Llamadas</string>
-    <string name="inicio_btn2">Mensajes</string>
-    <string name="inicio_btn3">Contactos</string>
-    <string name="title_activity_nuevo_contacto">NuevoContacto</string>
-    <string name="title_activity_lista_contactos">ListaContactosActivity</string>
+    <string name="title_activity_llamadas">Calls</string>
+    <string name="title_activity_menu_mensajes">MSM Menu</string>
+    <string name="title_activity_menu__inicio">Home</string>
+    <string name="inicio_btn1">Calls</string>
+    <string name="inicio_btn2">Messages</string>
+    <string name="inicio_btn3">Contacts</string>
+    <string name="title_activity_nuevo_contacto">New Contact</string>
+    <string name="title_activity_lista_contactos">Contact list</string>
     <string name="dialog_Title"> Prueba 1</string>
-    <string name="dialog_aceptar">Aceptar</string>
-    <string name="dialog_cancel">Cancelar</string>
-    <string name="dialog_contacts_title"> Elige una opcion</string>
-    <string name="title_activity_registro_de_llamadas">RegistroDeLlamadas</string>
+    <string name="dialog_aceptar">Acept</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_contacts_title"> Choose an option</string>
+    <string name="title_activity_registro_de_llamadas">Calls History</string>
+    <string name="new_contact_btn">Add Contact</string>
 
 </resources>
