@@ -98,4 +98,33 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pbBateria"
+        android:layout_alignTop="@+id/btnContactos"
+        android:layout_alignRight="@+id/button3"
+        android:layout_alignEnd="@+id/button3"
+        android:layout_toRightOf="@+id/ibFav2"
+        android:layout_toEndOf="@+id/ibFav2"
+        android:indeterminate="false" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sbBateria"
+        android:layout_below="@+id/pbBateria"
+        android:layout_alignRight="@+id/pbBateria"
+        android:layout_alignEnd="@+id/pbBateria"
+        android:indeterminate="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvBateria"
+        android:layout_below="@+id/sbBateria"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

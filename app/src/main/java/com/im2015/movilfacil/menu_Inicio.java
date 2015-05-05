@@ -1,6 +1,8 @@
 package com.im2015.movilfacil;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.BatteryManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -10,10 +12,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class menu_Inicio extends ActionBarActivity {
     private RecividorSMS recividorSMS;
+    TextView tvBateria;
+    ProgressBar pbBateria;
+    SeekBar sbBateria;
 //public class menu_Inicio extends ActionBarActivity {
     //public FragmentManager fm = getSupportFragmentManager();
     @Override
@@ -69,7 +78,15 @@ public class menu_Inicio extends ActionBarActivity {
 
             }
         });*/
-
+        //BATERIA
+        tvBateria= (TextView) findViewById(R.id.tvBateria);
+        pbBateria= (ProgressBar) findViewById(R.id.pbBateria);
+        sbBateria=(SeekBar) findViewById(R.id.sbBateria);
+        int carga= cargaBateria();
+        tvBateria.setText("Carga batería: " +
+                String.valueOf(carga) + "%");
+        pbBateria.setProgress((int)(carga * 100 / 100));
+        sbBateria.setProgress((int)(carga * 100 / 100));
 
 
     }
@@ -98,5 +115,24 @@ public class menu_Inicio extends ActionBarActivity {
 
     public RecividorSMS getRecividorSMS() {
         return recividorSMS;
+    }
+    public int cargaBateria ()
+    {
+        try
+        {
+            IntentFilter batIntentFilter =
+                    new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+            Intent battery =
+                    this.registerReceiver(null, batIntentFilter);
+            int nivelBateria = battery.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+            return nivelBateria;
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getApplicationContext(),
+                    "Error al obtener estado de la batería",
+                    Toast.LENGTH_SHORT).show();
+            return 0;
+        }
     }
 }
