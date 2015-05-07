@@ -22,7 +22,6 @@ public class menu_Inicio extends ActionBarActivity {
     private RecividorSMS recividorSMS;
     TextView tvBateria;
     ProgressBar pbBateria;
-    SeekBar sbBateria;
 //public class menu_Inicio extends ActionBarActivity {
     //public FragmentManager fm = getSupportFragmentManager();
     @Override
@@ -81,12 +80,10 @@ public class menu_Inicio extends ActionBarActivity {
         //BATERIA
         tvBateria= (TextView) findViewById(R.id.tvBateria);
         pbBateria= (ProgressBar) findViewById(R.id.pbBateria);
-        sbBateria=(SeekBar) findViewById(R.id.sbBateria);
         int carga= cargaBateria();
         tvBateria.setText("Carga batería: " +
                 String.valueOf(carga) + "%");
         pbBateria.setProgress((int)(carga * 100 / 100));
-        sbBateria.setProgress((int)(carga * 100 / 100));
 
 
     }

@@ -99,7 +99,7 @@
         android:layout_alignParentEnd="true" />
 
     <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/pbBateria"
@@ -110,21 +110,27 @@
         android:layout_toEndOf="@+id/ibFav2"
         android:indeterminate="false" />
 
-    <SeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/sbBateria"
-        android:layout_below="@+id/pbBateria"
-        android:layout_alignRight="@+id/pbBateria"
-        android:layout_alignEnd="@+id/pbBateria"
-        android:indeterminate="false" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvBateria"
-        android:layout_below="@+id/sbBateria"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/pbBateria" />
+
+    <TextClock
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textClock"
+        android:layout_below="@+id/ibGestionFavs"
+        android:layout_centerHorizontal="true" />
+
+    <DigitalClock
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/digitalClock"
+        android:layout_below="@+id/textClock"
+        android:layout_alignLeft="@+id/textClock"
+        android:layout_alignStart="@+id/textClock" />
 
 </RelativeLayout>
