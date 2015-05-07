@@ -14,8 +14,9 @@ public class ActivityAyuda extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity_ayuda);
         WebView webview = (WebView) this.findViewById(R.id.webView);
+        String lugar = (String) this.getIntent().getExtras().get("lugar");
 
-        webview.loadUrl("file:///com.im2015.movilfacil/res/ayuda.html");
+        webview.loadUrl("file:///android_asset/ayuda.html"+lugar);
     }
 
 
