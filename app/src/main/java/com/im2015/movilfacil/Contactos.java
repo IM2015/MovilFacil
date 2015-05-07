@@ -86,18 +86,22 @@ public class Contactos {
                 ContactsContract.CommonDataKinds.Phone._ID,
                 ContactsContract.CommonDataKinds.Phone.PHOTO_ID};
 
-        Cursor people = cr.query(uri, projection, null, null, null);
-
+        Cursor people = cr.query(uri, /* projection */null, null, null, null);
         int indexName = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
         int indexNumber = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
         int indexId=people.getColumnIndex(ContactsContract.CommonDataKinds.Phone._ID);
         int indexPhoto=people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_ID);
         people.moveToFirst();
         do {
+            if(Integer.valueOf(people.getInt(indexPhoto))!=null){
+                l.add(new Contacto(people.getString(indexId),people.getString(indexName),people.getString(indexNumber),getFotoBitmap(people.getInt(indexPhoto))));
+            }else{
+                l.add(new Contacto(people.getString(indexId),people.getString(indexName),people.getString(indexNumber)));
+            }
 
-            l.add(new Contacto(people.getString(indexId),people.getString(indexName),people.getString(indexNumber),getFotoBitmap(people.getInt(indexPhoto))));
 
         } while (people.moveToNext());
+        people.close();
         return l;
     }
     /*
