@@ -92,12 +92,14 @@ public class Contactos {
         int indexNumber = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
         int indexId=people.getColumnIndex(ContactsContract.CommonDataKinds.Phone._ID);
         int indexPhoto=people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_ID);
-        people.moveToFirst();
-        do {
+        if(people.getCount()>0) {
+            people.moveToFirst();
+            do {
 
-            l.add(new Contacto(people.getString(indexId),people.getString(indexName),people.getString(indexNumber),getFotoBitmap(people.getInt(indexPhoto))));
+                l.add(new Contacto(people.getString(indexId), people.getString(indexName), people.getString(indexNumber), getFotoBitmap(people.getInt(indexPhoto))));
 
-        } while (people.moveToNext());
+            } while (people.moveToNext());
+        }
         return l;
     }
     /*

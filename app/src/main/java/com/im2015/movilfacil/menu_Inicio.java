@@ -56,7 +56,7 @@ public class menu_Inicio extends ActionBarActivity {
         btnMensajes.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(v.getContext(),MenuMensajes.class);
+                Intent intent = new Intent(v.getContext(),MenssageBox.class);
                 startActivityForResult(intent,0);
             }
         });

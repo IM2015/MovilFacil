@@ -30,15 +30,16 @@ public class Llamadas {
         int indexDate = cLlamadas.getColumnIndex(CallLog.Calls.DATE);
         int indexDuration = cLlamadas.getColumnIndex(CallLog.Calls.DURATION);
         int indexType= cLlamadas.getColumnIndex(CallLog.Calls.TYPE);
-
-        cLlamadas.moveToFirst();
-        do {
-            String number = cLlamadas.getString(indexNumber);
-            Date date = new Date(cLlamadas.getLong(indexDate));
-            int duration = cLlamadas.getInt(indexDuration);
-            int type = cLlamadas.getInt(indexType);
-            l.add(new Llamada(number,date,duration,type));
-        } while (cLlamadas.moveToNext());
+        if(cLlamadas.getCount()>0) {
+            cLlamadas.moveToFirst();
+            do {
+                String number = cLlamadas.getString(indexNumber);
+                Date date = new Date(cLlamadas.getLong(indexDate));
+                int duration = cLlamadas.getInt(indexDuration);
+                int type = cLlamadas.getInt(indexType);
+                l.add(new Llamada(number, date, duration, type));
+            } while (cLlamadas.moveToNext());
+        }
         return l;
     }
 }
