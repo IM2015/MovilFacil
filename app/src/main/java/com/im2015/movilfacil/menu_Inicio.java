@@ -1,7 +1,12 @@
 package com.im2015.movilfacil;
 
 import android.content.ClipData;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Bitmap;
+import android.media.Image;
+import android.os.BatteryManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -12,18 +17,66 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class menu_Inicio extends ActionBarActivity {
     private RecividorSMS recividorSMS;
-//public class menu_Inicio extends ActionBarActivity {
-    //public FragmentManager fm = getSupportFragmentManager();
+    private FragmentManager fm = getSupportFragmentManager();
+    TextView tvBateria;
+    ProgressBar pbBateria;
+    private ContentResolver cr;
+    private Contactos c;
+    private ConfiguracionFavoritos cf;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //new Contactos(getApplicationContext().getContentResolver()).eliminarContacto(new Contacto("1","1","1"));
         this.recividorSMS = new RecividorSMS();
         setContentView(R.layout.activity_menu__inicio);
+        //Favoritos
+        cr = getContentResolver();
+        c = new Contactos(cr);
+        cf= new ConfiguracionFavoritos(getApplicationContext());
+        //TODO CORREGIR POPUP: cUANDO NO HAY FAVORITO EN UN BOTÓN
+        //Botones favoritos
+        ImageButton ib=null;
+        ib= (ImageButton)menu_Inicio.this.findViewById(R.id.ibFav1);
+        ib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                PopUpFavoritos Popup1 = new PopUpFavoritos();
+                Bundle b = new Bundle();
+                b.putString("id", cf.getfav1());
+                Popup1.setArguments(b);
+                Popup1.show(fm, "Dialog Fragment");
+            }
+        });
+        ib= (ImageButton)menu_Inicio.this.findViewById(R.id.ibFav2);
+        ib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                PopUpFavoritos Popup1 = new PopUpFavoritos();
+                Bundle b = new Bundle();
+                b.putString("id", cf.getfav2());
+                Popup1.setArguments(b);
+                Popup1.show(fm, "Dialog Fragment");
+            }
+        });
+        ib= (ImageButton)menu_Inicio.this.findViewById(R.id.ibFav3);
+        ib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                PopUpFavoritos Popup1 = new PopUpFavoritos();
+                Bundle b = new Bundle();
+                b.putString("id", cf.getfav3());
+                Popup1.setArguments(b);
+                Popup1.show(fm, "Dialog Fragment");
+            }
+        });
         ImageButton bFavs= (ImageButton) findViewById(R.id.ibGestionFavs);
         bFavs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,19 +114,24 @@ public class menu_Inicio extends ActionBarActivity {
             }
         });
 
+        //Favoritos
+        cargarDatosFavoritos();
 
-        /*Button btnContactos = (Button) findViewById(R.id.button);
-        btnContactos.setOnClickListener(new View.OnClickListener(){
-             @Override
-            public void onClick(View v){
-                popupContactos Popup1 = new popupContactos();
-                Popup1.show(fm, "Dialog Fragment");
-
-            }
-        });*/
+        //BATERIA
+        tvBateria= (TextView) findViewById(R.id.tvBateria);
+        pbBateria= (ProgressBar) findViewById(R.id.pbBateria);
+        int carga= cargaBateria();
+        tvBateria.setText("Carga batería: " +
+                String.valueOf(carga) + "%");
+        pbBateria.setProgress((int)(carga * 100 / 100));
 
 
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cargarDatosFavoritos();
     }
 
     @Override
@@ -108,4 +166,89 @@ public class menu_Inicio extends ActionBarActivity {
     public RecividorSMS getRecividorSMS() {
         return recividorSMS;
     }
+    public int cargaBateria ()    {
+        try
+        {
+            IntentFilter batIntentFilter =
+                    new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+            Intent battery =
+                    this.registerReceiver(null, batIntentFilter);
+            int nivelBateria = battery.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+            return nivelBateria;
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getApplicationContext(),
+                    "Error al obtener estado de la batería",
+                    Toast.LENGTH_SHORT).show();
+            return 0;
+        }
+    }
+    private void cargarDatosFavoritos(){
+        Contacto con=null;
+        ImageButton ib=null;
+        TextView tv=null;
+        //Fav1
+        tv= (TextView) menu_Inicio.this.findViewById(R.id.tvFav1);
+        ib= (ImageButton) menu_Inicio.this.findViewById(R.id.ibFav1);
+        if(cf.getfav1()!=null){
+            con=c.getContactoId(cf.getfav1());
+
+            tv.setText(con.getNombre());
+
+            Bitmap foto= con.getFoto();
+            if(foto!=null){
+                ib.setImageBitmap(foto);
+            }else{
+                ib.setImageResource(R.drawable.user168);
+            }
+
+        }else{
+
+            tv.setText("");
+            ib.setImageResource(R.drawable.user168);
+        }
+        //Fav2
+        tv= (TextView) menu_Inicio.this.findViewById(R.id.tvFav2);
+        ib= (ImageButton) menu_Inicio.this.findViewById(R.id.ibFav2);
+        if(cf.getfav2()!=null){
+            con=c.getContactoId(cf.getfav2());
+
+            tv.setText(con.getNombre());
+
+            Bitmap foto= con.getFoto();
+            if(foto!=null){
+                ib.setImageBitmap(foto);
+            }else{
+                ib.setImageResource(R.drawable.user168);
+            }
+
+        }else{
+
+            tv.setText("");
+            ib.setImageResource(R.drawable.user168);
+        }
+        //Fav3
+        tv= (TextView) menu_Inicio.this.findViewById(R.id.tvFav3);
+        ib= (ImageButton) menu_Inicio.this.findViewById(R.id.ibFav3);
+        if(cf.getfav3()!=null){
+            con=c.getContactoId(cf.getfav3());
+
+            tv.setText(con.getNombre());
+
+            Bitmap foto= con.getFoto();
+            if(foto!=null){
+                ib.setImageBitmap(foto);
+            }else{
+                ib.setImageResource(R.drawable.user168);
+            }
+
+        }else{
+
+            tv.setText("");
+            ib.setImageResource(R.drawable.user168);
+        }
+
+    }
+
 }
