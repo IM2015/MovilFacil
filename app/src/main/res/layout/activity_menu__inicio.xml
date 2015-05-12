@@ -133,4 +133,35 @@
         android:layout_alignLeft="@+id/textClock"
         android:layout_alignStart="@+id/textClock" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/tvFav1"
+        android:layout_alignTop="@+id/horizontalScrollView"
+        android:layout_toRightOf="@+id/horizontalScrollView"
+        android:layout_toEndOf="@+id/horizontalScrollView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/tvFav2"
+        android:layout_alignBottom="@+id/tvFav1"
+        android:layout_toRightOf="@+id/ibFav1"
+        android:layout_toEndOf="@+id/ibFav1"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/tvFav3"
+        android:layout_alignBottom="@+id/tvFav2"
+        android:layout_alignLeft="@+id/ibFav3"
+        android:layout_alignStart="@+id/ibFav3"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp" />
+
 </RelativeLayout>
