@@ -3,6 +3,7 @@ package com.im2015.movilfacil;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
@@ -17,7 +18,7 @@ import java.util.List;
  */
 public class RecividorSMS extends BroadcastReceiver {
     SmsManager sms = SmsManager.getDefault();
-    List<Mensaje> lm = new ArrayList<Mensaje>();
+    Mensajes mensajes = null;
     @Override
     public void onReceive(Context context, Intent intent) {
         try {
@@ -33,20 +34,19 @@ public class RecividorSMS extends BroadcastReceiver {
 
                     String senderNum = phoneNumber;
                     String message = currentMessage.getDisplayMessageBody();
-                    lm.add(new Mensaje(message,senderNum, Mensaje.Tipo.recibido,new Date()));
+                    //lm.add();
+                    if(mensajes==null)mensajes = new Mensajes(context);
+                    mensajes.recibir(new Mensaje(message,senderNum, Mensaje.Tipo.recibido,new Date()));
 
 
 
-
-                } // end for loop
-            } // bundle is null
+                }
+            }
 
         } catch (Exception e) {
             Log.e("SmsReceiver", "Exception smsReceiver" + e);
 
         }
     }
-    public List<Mensaje> getMensajes(){
-        return this.lm;
-    }
+
 }

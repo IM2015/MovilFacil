@@ -1,5 +1,6 @@
 package com.im2015.movilfacil;
 
+import android.content.ClipData;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -9,6 +10,7 @@ import android.os.BatteryManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.internal.view.menu.MenuView;
 import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -107,7 +109,7 @@ public class menu_Inicio extends ActionBarActivity {
         btnMensajes.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(v.getContext(),MenuMensajes.class);
+                Intent intent = new Intent(v.getContext(),MenssageBox.class);
                 startActivityForResult(intent,0);
             }
         });
@@ -149,6 +151,13 @@ public class menu_Inicio extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        if(id == R.id.ayuda){
+            Bundle b = new Bundle();
+            b.putString("lugar","#inicio");
+            Intent i = new Intent(getBaseContext(),ActivityAyuda.class);
+            i.putExtras(b);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);

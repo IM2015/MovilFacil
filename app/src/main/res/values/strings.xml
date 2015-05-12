@@ -27,5 +27,7 @@
     <string name="title_activity_envio_mensaje">Envio Mensaje</string>
     <string name="txtSmsTitulo">Enviar a </string>
     <string name="btnEnviar">Enviar</string>
+    <string name="title_activity_activity_ayuda">Ayuda</string>
+    <string name="ayuda">ayuda</string>
 
 </resources>

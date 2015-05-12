@@ -35,7 +35,7 @@ public class EnvioMensaje extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     String mensaje = ((EditText) EnvioMensaje.this.findViewById(R.id.txtSmsText)).getText().toString();
-                    new Mensajes(getContentResolver()).enviar(numero,mensaje);
+                    new Mensajes(EnvioMensaje.this.getBaseContext()).enviar(numero,mensaje);
 
                     finish();
                 }

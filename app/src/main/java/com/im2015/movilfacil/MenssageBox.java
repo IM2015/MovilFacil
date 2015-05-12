@@ -24,7 +24,7 @@ public class MenssageBox extends ActionBarActivity {
         setContentView(R.layout.activity_menssage_box);
         ContentResolver cr = getContentResolver();
         ListView listView = (ListView) findViewById(R.id.listViewMensajes);
-        Mensajes Mensajes = new Mensajes(cr);
+        Mensajes Mensajes = new Mensajes(this.getBaseContext());
         List<Mensaje> l = Mensajes.getMensajes();
         listView.setAdapter(new SmsAdapter(this,l));
 

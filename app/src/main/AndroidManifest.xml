@@ -12,13 +12,9 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
-
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
-
-
-
 
     <application
         android:allowBackup="true"
@@ -33,13 +29,15 @@
             android:name=".MenuMensajes"
             android:label="@string/title_activity_menu_mensajes" >
         </activity>
-        <activity android:name=".menu_Inicio"
+        <activity
+            android:name=".menu_Inicio"
             android:label="@string/title_activity_menu__inicio"
             android:launchMode="singleInstance"
-            android:stateNotNeeded="true">
+            android:stateNotNeeded="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.HOME"/>
+
+                <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -80,7 +78,15 @@
             android:name=".EnvioMensaje"
             android:label="@string/title_activity_envio_mensaje" >
         </activity>
-
+        <activity
+            android:name=".ActivityAyuda"
+            android:label="@string/title_activity_activity_ayuda" >
+        </activity>
+        <receiver android:name=".RecividorSMS" android:enabled="true">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
