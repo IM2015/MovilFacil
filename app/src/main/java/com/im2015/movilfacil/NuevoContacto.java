@@ -4,6 +4,7 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -69,6 +70,13 @@ public class NuevoContacto extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        if(id == R.id.ayuda){
+            Bundle b = new Bundle();
+            b.putString("lugar","#Contactos");
+            Intent i = new Intent(getBaseContext(),ActivityAyuda.class);
+            i.putExtras(b);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);

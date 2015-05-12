@@ -157,6 +157,13 @@ public class ListaContactosActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        if(id == R.id.ayuda){
+            Bundle b = new Bundle();
+            b.putString("lugar","#contactos");
+            Intent i = new Intent(getBaseContext(),ActivityAyuda.class);
+            i.putExtras(b);
+            startActivity(i);
+        }
 
         return super.onOptionsItemSelected(item);
     }
