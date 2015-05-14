@@ -103,8 +103,9 @@ public class Contactos {
                 } while (people.moveToNext());
                 people.close();
             }
-        }
+
         return l;
+
     }
     /*
     * input telefono
