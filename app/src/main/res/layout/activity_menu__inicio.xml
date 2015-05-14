@@ -6,162 +6,140 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.im2015.movilfacil.menu_Inicio"
     android:id="@+id/App">
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/inicio_btn3"
-        android:id="@+id/btnContactos"
-        android:layout_marginTop="53dp"
-        android:layout_alignTop="@+id/button4" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/inicio_btn1"
-        android:id="@+id/button2"
-        android:layout_above="@+id/btnContactos"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/inicio_btn2"
-        android:id="@+id/button3"
-        android:layout_alignTop="@+id/button2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button4"
-        android:layout_marginBottom="43dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/button2"
-        android:layout_toStartOf="@+id/button2" />
-
-    <ImageButton
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/ibFav1"
-        android:src="@drawable/user168"
-        android:scaleType="centerInside"
-        android:nestedScrollingEnabled="true"
-        android:layout_marginBottom="190dp"
-        android:layout_above="@+id/btnContactos"
-        android:layout_toStartOf="@+id/button4"
-        android:layout_alignRight="@+id/btnContactos"
-        android:layout_alignEnd="@+id/btnContactos" />
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:orientation="vertical" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:orientation="horizontal" >
+            <ImageButton
+                android:background="@drawable/favorite_shape"
+                android:scaleType="centerInside"
+                android:nestedScrollingEnabled="true"
+                android:layout_width="94dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/ibFav1"
+                android:src="@drawable/user168"
+                />
+            <ImageButton
+                android:background="@drawable/favorite_shape"
+                android:scaleType="centerInside"
+                android:nestedScrollingEnabled="true"
+                android:layout_width="94dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/ibFav2"
+                android:src="@drawable/user168"
+                />
+            <ImageButton
+                android:background="@drawable/favorite_shape"
+                android:scaleType="centerInside"
+                android:nestedScrollingEnabled="true"
+                android:layout_width="94dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/ibFav3"
+                android:src="@drawable/user168"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="94dp"
+                android:layout_height="25dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/tvFav1" />
+            <TextView
+                android:layout_width="94dp"
+                android:layout_height="25dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/tvFav2"
+                />
+            <TextView
+                android:layout_width="94dp"
+                android:layout_height="25dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/tvFav3" />
+        </LinearLayout>
 
-    <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/ibFav3"
-        android:src="@drawable/user168"
-        android:scaleType="centerInside"
-        android:nestedScrollingEnabled="true"
-        android:layout_alignTop="@+id/ibFav1"
-        android:layout_toEndOf="@+id/ibFav1"
-        android:layout_alignBottom="@+id/ibFav1"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="233dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:orientation="vertical" >
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ibGestionFavs"
+                android:src="@drawable/settings48"
+                android:layout_below="@+id/ibFav3"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+            <ProgressBar
+                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pbBateria"
+                android:indeterminate="false" />
 
-    <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/ibFav2"
-        android:src="@drawable/user168"
-        android:scaleType="centerInside"
-        android:nestedScrollingEnabled="true"
-        android:layout_alignTop="@+id/ibFav3"
-        android:layout_toLeftOf="@+id/ibFav3"
-        android:layout_toEndOf="@+id/btnContactos"
-        android:layout_alignBottom="@+id/ibFav1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvBateria" />
 
-    <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/horizontalScrollView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/ibFav3" />
+            <TextClock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textClock"
+                android:layout_below="@+id/ibGestionFavs"
+                android:layout_centerHorizontal="true" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ibGestionFavs"
-        android:src="@drawable/settings48"
-        android:layout_below="@+id/ibFav3"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+            <DigitalClock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/digitalClock"/>
 
-    <ProgressBar
-        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/pbBateria"
-        android:layout_alignTop="@+id/btnContactos"
-        android:layout_alignRight="@+id/button3"
-        android:layout_alignEnd="@+id/button3"
-        android:layout_toRightOf="@+id/ibFav2"
-        android:layout_toEndOf="@+id/ibFav2"
-        android:indeterminate="false" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:orientation="horizontal" >
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/inicio_btn3"
+                android:id="@+id/btnContactos"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvBateria"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/pbBateria" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/inicio_btn1"
+                android:id="@+id/button2"/>
 
-    <TextClock
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textClock"
-        android:layout_below="@+id/ibGestionFavs"
-        android:layout_centerHorizontal="true" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/inicio_btn2"
+                android:id="@+id/button3"/>
 
-    <DigitalClock
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/digitalClock"
-        android:layout_below="@+id/textClock"
-        android:layout_alignLeft="@+id/textClock"
-        android:layout_alignStart="@+id/textClock" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/button4" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/tvFav1"
-        android:layout_alignTop="@+id/horizontalScrollView"
-        android:layout_toRightOf="@+id/horizontalScrollView"
-        android:layout_toEndOf="@+id/horizontalScrollView" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/tvFav2"
-        android:layout_alignBottom="@+id/tvFav1"
-        android:layout_toRightOf="@+id/ibFav1"
-        android:layout_toEndOf="@+id/ibFav1"
-        android:layout_marginLeft="17dp"
-        android:layout_marginStart="17dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/tvFav3"
-        android:layout_alignBottom="@+id/tvFav2"
-        android:layout_alignLeft="@+id/ibFav3"
-        android:layout_alignStart="@+id/ibFav3"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp" />
-
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
