@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MovilFacil</string>
+    <string name="title_activity_menu_inicio">Home</string>
+    <string name="title_activity_menu_llamadas">Calls</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_llamadas">Calls</string>
+    <string name="title_activity_menu_mensajes">Message menu</string>
+    <string name="title_activity_menu__inicio">Home</string>
+    <string name="inicio_btn1">Calls</string>
+    <string name="inicio_btn2">Messages</string>
+    <string name="inicio_btn3">Contacts</string>
+    <string name="title_activity_nuevo_contacto">New Contact</string>
+    <string name="title_activity_lista_contactos">Contacts</string>
+    <string name="dialog_Title"> Prueba 1</string>
+    <string name="dialog_aceptar">Accept</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_contacts_title">Choose an option</string>
+    <string name="title_activity_registro_de_llamadas">Call log</string>
+    <string name="title_activity_gestor_favoritos">Favourites</string>
+    <string name="title_activity_menssage_box">Message</string>
+    <string name="title_activity_editar_contacto">Edit Contact</string>
+    <string name="EditarContactoNombre">Contact name</string>
+    <string name="EditarContactoNumero">Contact number</string>
+    <string name="title_activity_envio_mensaje">Send message</string>
+    <string name="txtSmsTitulo">Send to </string>
+    <string name="btnEnviar">Send</string>
+    <string name="title_activity_activity_ayuda">Help</string>
+    <string name="ayuda">help</string>
+    <string name="llamar">Call</string>
+    <string name="mensaje">Send Message</string>
+    <string name="editar">Edit</string>
+    <string name="eliminar">Delete</string>
+    <string name="carga">"Batery charge: "</string>
+</resources>

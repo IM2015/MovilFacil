@@ -15,8 +15,8 @@ import android.support.v4.app.DialogFragment;
 
 public class PopUpFavoritos extends DialogFragment {
     String[] titulos = {
-            "Llamar",
-            "Enviar mensaje"
+            this.getString(R.string.llamar),
+            this.getString(R.string.mensaje)
     };
     private Contacto contacto;
     private ContentResolver cr;

@@ -121,7 +121,7 @@ public class menu_Inicio extends ActionBarActivity {
         tvBateria= (TextView) findViewById(R.id.tvBateria);
         pbBateria= (ProgressBar) findViewById(R.id.pbBateria);
         int carga= cargaBateria();
-        tvBateria.setText("Carga batería: " +
+        tvBateria.setText(getString(R.string.carga) +
                 String.valueOf(carga) + "%");
         pbBateria.setProgress((int)(carga * 100 / 100));
 

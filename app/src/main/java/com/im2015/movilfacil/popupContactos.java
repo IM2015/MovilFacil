@@ -14,10 +14,10 @@ import android.support.v4.app.DialogFragment;
 
 public class popupContactos extends DialogFragment {
     String[] titulos = {
-            "Llamar",
-            "Mensaje",
-            "Editar",
-            "Eliminar"
+            this.getString(R.string.llamar),
+            this.getString(R.string.mensaje),
+            this.getString(R.string.editar),
+            this.getString(R.string.eliminar)
     };
     private Contacto contacto;
 

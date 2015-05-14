@@ -15,8 +15,12 @@ public class ActivityAyuda extends ActionBarActivity {
         setContentView(R.layout.activity_activity_ayuda);
         WebView webview = (WebView) this.findViewById(R.id.webView);
         String lugar = (String) this.getIntent().getExtras().get("lugar");
+        if(getApplicationContext().getResources().getConfiguration().locale.getLanguage().equals("es")){
+            webview.loadUrl("file:///android_asset/ayuda.html"+lugar);
+        }else{
+            webview.loadUrl("file:///android_asset/help.html"+lugar);
+        }
 
-        webview.loadUrl("file:///android_asset/ayuda.html"+lugar);
     }
 
 
