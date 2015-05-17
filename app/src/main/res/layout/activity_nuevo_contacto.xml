@@ -19,6 +19,7 @@
         android:layout_marginTop="31dp" />
 
     <EditText
+        style="@style/edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
@@ -43,6 +44,7 @@
         android:layout_marginTop="77dp" />
 
     <EditText
+        style="@style/edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="phone"
