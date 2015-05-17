@@ -29,5 +29,8 @@
     <string name="btnEnviar">Enviar</string>
     <string name="title_activity_activity_ayuda">Ayuda</string>
     <string name="ayuda">ayuda</string>
-
+    <string name="btn_admin_favs">Administrar Favoritos</string>
+    <string name="fav1_title">Favorito 1</string>
+    <string name="fav2_title">Favorito 2</string>
+    <string name="fav3_title">Favorito 3</string>
 </resources>

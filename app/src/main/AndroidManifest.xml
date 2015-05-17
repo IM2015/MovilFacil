@@ -21,14 +21,25 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
         <activity
             android:name=".MenuLlamadasActivity"
-            android:label="@string/title_activity_menu_llamadas" >
+            android:label="@string/title_activity_menu_llamadas"
+            android:parentActivityName=".menu_Inicio" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.im2015.movilfacil.menu_Inicio" />
         </activity>
+
         <activity
             android:name=".MenuMensajes"
-            android:label="@string/title_activity_menu_mensajes" >
+            android:label="@string/title_activity_menu_mensajes"
+            android:parentActivityName=".menu_Inicio" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.im2015.movilfacil.menu_Inicio" />
         </activity>
+
         <activity
             android:name=".menu_Inicio"
             android:label="@string/title_activity_menu__inicio"
@@ -36,16 +47,21 @@
             android:stateNotNeeded="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".NuevoContacto"
-            android:label="@string/title_activity_nuevo_contacto" >
+            android:label="@string/title_activity_nuevo_contacto"
+            android:parentActivityName=".ListaContactosActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.im2015.movilfacil.ListaContactosActivity" />
         </activity>
+
         <activity
             android:name=".ListaContactosActivity"
             android:label="@string/title_activity_lista_contactos"
@@ -54,10 +70,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.im2015.movilfacil.menu_Inicio" />
         </activity>
+
         <activity
             android:name=".RegistroDeLlamadas"
-            android:label="@string/title_activity_registro_de_llamadas" >
+            android:label="@string/title_activity_registro_de_llamadas"
+            android:parentActivityName=".menu_Inicio" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.im2015.movilfacil.menu_Inicio" />
         </activity>
+
         <activity
             android:name=".GestorFavoritos"
             android:label="@string/title_activity_gestor_favoritos"
@@ -66,22 +88,39 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.im2015.movilfacil.menu_Inicio" />
         </activity>
+
         <activity
             android:name=".MenssageBox"
-            android:label="@string/title_activity_menssage_box" >
+            android:label="@string/title_activity_menssage_box"
+            android:parentActivityName=".MenuMensajes" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.im2015.movilfacil.MenuMensajes" />
         </activity>
+
         <activity
             android:name=".editarContacto"
-            android:label="@string/title_activity_editar_contacto" >
+            android:label="@string/title_activity_editar_contacto"
+            android:parentActivityName=".ListaContactosActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.im2015.movilfacil.ListaContactosActivity" />
         </activity>
+
         <activity
             android:name=".EnvioMensaje"
             android:label="@string/title_activity_envio_mensaje" >
         </activity>
+
         <activity
             android:name=".ActivityAyuda"
-            android:label="@string/title_activity_activity_ayuda" >
+            android:label="@string/title_activity_activity_ayuda"
+            android:parentActivityName=".menu_Inicio" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.im2015.movilfacil.menu_Inicio" />
         </activity>
+
         <receiver android:name=".RecividorSMS" android:enabled="true">
             <intent-filter android:priority="2147483647">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
