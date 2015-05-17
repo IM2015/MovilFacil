@@ -1,38 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight" >
-    <ImageView
-        android:id="@+id/ivImagen"
-        android:layout_width="?android:attr/listPreferredItemHeight"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/user168" />
-    <TextView
-        android:id="@+id/tvNombre"
-        android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+    <LinearLayout
+        style="@style/layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@id/ivImagen"
-        android:singleLine="true"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-    <TextView
-        android:id="@+id/tvTfno"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="false"
-        android:layout_toRightOf="@id/ivImagen"
-        android:layout_alignParentBottom="true"
-        android:layout_alignWithParentIfMissing="false" />
+        android:orientation="horizontal"
+        android:padding="5dp">
+            <ImageView
+                android:id="@+id/ivImagen"
+                android:layout_width="?android:attr/listPreferredItemHeight"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/user168" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:orientation="vertical">
+                <TextView
+                    android:textSize="15dp"
+                    android:id="@+id/tvNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tvTfno"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="12/12/2015 22:00"
-        android:id="@+id/tvDate"
-        android:layout_below="@+id/tvNombre"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+                <TextView
+                    android:textSize="12dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="12/12/2015 22:00"
+                    android:id="@+id/tvDate" />
+
+
+            </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
 </RelativeLayout>

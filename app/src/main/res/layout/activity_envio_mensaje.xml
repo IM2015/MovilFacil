@@ -15,6 +15,7 @@
         android:id="@+id/lblSmsTitulo" />
 
     <EditText
+        style="@style/edit_text"
         android:layout_width="fill_parent"
         android:layout_height="137dp"
         android:inputType="textMultiLine"

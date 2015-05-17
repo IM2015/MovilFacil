@@ -6,4 +6,8 @@
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/ayuda" android:icon="@drawable/help"
         android:title="@string/ayuda" android:orderInCategory="0" app:showAsAction="always"/>
+    <item android:id="@+id/actionHome" android:icon="@drawable/home5_32px"
+        android:title="@string/ayuda" android:orderInCategory="0" app:showAsAction="always"/>
+
+
 </menu>
