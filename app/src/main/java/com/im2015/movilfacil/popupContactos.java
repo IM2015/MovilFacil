@@ -13,12 +13,7 @@ import android.support.v4.app.DialogFragment;
 
 
 public class popupContactos extends DialogFragment {
-    String[] titulos = {
-            this.getString(R.string.llamar),
-            this.getString(R.string.mensaje),
-            this.getString(R.string.editar),
-            this.getString(R.string.eliminar)
-    };
+    private static String[] titulos = null;
     private Contacto contacto;
 
     static popupContactos newInstance(String idContacto){
@@ -33,7 +28,14 @@ public class popupContactos extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
-         Bundle args = this.getArguments();
+        if(titulos == null) {
+            titulos = new String[4];
+            titulos[0] = this.getString(R.string.llamar);
+            titulos[1] = this.getString(R.string.mensaje);
+            titulos[2] = this.getString(R.string.editar);
+            titulos[3] = this.getString(R.string.eliminar);
+        }
+        Bundle args = this.getArguments();
          String id = args.getString("id");
          String nombre = args.getString("nombre");
          String numero = args.getString("numero");

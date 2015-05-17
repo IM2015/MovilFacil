@@ -27,16 +27,11 @@ import android.support.v4.app.DialogFragment;
 
 
 public class PopupLlamadas extends DialogFragment {
-    String[] titulos = {
-            this.getString(R.string.llamar),
-            this.getString(R.string.mensaje)
-            //"Editar"
-            //"Eliminar",
-            //"Añadir a favoritos"
-    };
+    private static String[] titulos = null;
     //private Contacto contacto;
     private String numero;
     static popupContactos newInstance(String numero){
+        titulos = null;
         popupContactos vEmergente = new popupContactos();
         Bundle args = new Bundle();
         args.putString("numero", numero);
@@ -48,6 +43,14 @@ public class PopupLlamadas extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
+        if(titulos == null){
+            titulos = new String[2];
+            titulos[0] = this.getString(R.string.llamar);
+            titulos[1] = this.getString(R.string.mensaje);
+                //"Editar"
+                //"Eliminar",
+                //"Añadir a favoritos"
+        }
         Bundle args = this.getArguments();
         //String id = args.getString("id");
         //String nombre = args.getString("nombre");

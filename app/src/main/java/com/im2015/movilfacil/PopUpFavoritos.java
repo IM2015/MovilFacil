@@ -14,10 +14,7 @@ import android.support.v4.app.DialogFragment;
 
 
 public class PopUpFavoritos extends DialogFragment {
-    String[] titulos = {
-            this.getString(R.string.llamar),
-            this.getString(R.string.mensaje)
-    };
+    private static String[] titulos = null;
     private Contacto contacto;
     private ContentResolver cr;
     private Contactos c;
@@ -33,6 +30,11 @@ public class PopUpFavoritos extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
+        if(titulos == null) {
+            titulos = new String[2];
+            titulos[0] = this.getString(R.string.llamar);
+            titulos[1] = this.getString(R.string.mensaje);
+        }
         Bundle args = this.getArguments();
         String id = args.getString("id");
         cr = this.getActivity().getContentResolver();
