@@ -13,6 +13,8 @@ import android.os.RemoteException;
 import android.provider.ContactsContract;
 import android.util.Log;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,25 +30,75 @@ public class Contactos {
     }
     public  void nuevoContacto(String nombre, String numero) {
         ArrayList<ContentProviderOperation> comandosAgregar = new ArrayList<ContentProviderOperation>();
+        int rawContactID = comandosAgregar.size();
         comandosAgregar.add(ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
                         .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
                         .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
                         .build()
         );
         comandosAgregar.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
-                        .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                        .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, rawContactID)
                         .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
                         .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, nombre )
                         .build()
         );
         comandosAgregar.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
-                        .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                        .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, rawContactID)
                         .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
                         .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, numero)
                         .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_HOME)
                         .build()
         );
 
+        try {
+            cr.applyBatch(ContactsContract.AUTHORITY, comandosAgregar);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (OperationApplicationException e) {
+            e.printStackTrace();
+        }
+    }
+    //Nuevo contacto con imagen
+    public  void nuevoContacto(String nombre, String numero,Bitmap mBitmap) {
+        ArrayList<ContentProviderOperation> comandosAgregar = new ArrayList<ContentProviderOperation>();
+        int rawContactID = comandosAgregar.size();
+        comandosAgregar.add(ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
+                        .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
+                        .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
+                        .build()
+        );
+        comandosAgregar.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                        .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, rawContactID)
+                        .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
+                        .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, nombre )
+                        .build()
+        );
+        comandosAgregar.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                        .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, rawContactID)
+                        .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
+                        .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, numero)
+                        .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_HOME)
+                        .build()
+        );
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        if(mBitmap!=null){    // If an image is selected successfully
+            mBitmap.compress(Bitmap.CompressFormat.PNG , 75, stream);
+
+            // Adding insert operation to operations list
+            // to insert Photo in the table ContactsContract.Data
+            comandosAgregar.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, rawContactID)
+                    .withValue(ContactsContract.Data.IS_SUPER_PRIMARY, 1)
+                    .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE)
+                    .withValue(ContactsContract.CommonDataKinds.Photo.PHOTO,stream.toByteArray())
+                    .build());
+
+            try {
+                stream.flush();
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         try {
             cr.applyBatch(ContactsContract.AUTHORITY, comandosAgregar);
         } catch (RemoteException e) {
@@ -152,6 +204,14 @@ public class Contactos {
     public void editarContacto(Contacto viejo,String nuevoNombre, String nuevoNumero){
         eliminarContacto(viejo);
         this.nuevoContacto(nuevoNombre,nuevoNumero);
+    }
+    /*
+    Editar Contacto
+    input: Contacto viejo, Contacto nuevo con imagen
+     */
+    public void editarContacto(Contacto viejo,String nuevoNombre, String nuevoNumero, Bitmap imagen){
+        eliminarContacto(viejo);
+        this.nuevoContacto(nuevoNombre,nuevoNumero,imagen);
     }
     private Bitmap getFotoBitmap(int imageDataRow) {
         Cursor c =  cr.query(ContactsContract.Data.CONTENT_URI, new String[] {

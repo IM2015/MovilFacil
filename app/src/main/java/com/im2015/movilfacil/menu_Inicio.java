@@ -48,33 +48,39 @@ public class menu_Inicio extends ActionBarActivity {
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                PopUpFavoritos Popup1 = new PopUpFavoritos();
-                Bundle b = new Bundle();
-                b.putString("id", cf.getfav1());
-                Popup1.setArguments(b);
-                Popup1.show(fm, "Dialog Fragment");
+                if(cf.getfav1()!=null) {
+                    PopUpFavoritos Popup1 = new PopUpFavoritos();
+                    Bundle b = new Bundle();
+                    b.putString("id", cf.getfav1());
+                    Popup1.setArguments(b);
+                    Popup1.show(fm, "Dialog Fragment");
+                }
             }
         });
         ib= (ImageButton)menu_Inicio.this.findViewById(R.id.ibFav2);
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                PopUpFavoritos Popup1 = new PopUpFavoritos();
-                Bundle b = new Bundle();
-                b.putString("id", cf.getfav2());
-                Popup1.setArguments(b);
-                Popup1.show(fm, "Dialog Fragment");
+                if(cf.getfav2()!=null) {
+                    PopUpFavoritos Popup1 = new PopUpFavoritos();
+                    Bundle b = new Bundle();
+                    b.putString("id", cf.getfav2());
+                    Popup1.setArguments(b);
+                    Popup1.show(fm, "Dialog Fragment");
+                }
             }
         });
         ib= (ImageButton)menu_Inicio.this.findViewById(R.id.ibFav3);
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                PopUpFavoritos Popup1 = new PopUpFavoritos();
-                Bundle b = new Bundle();
-                b.putString("id", cf.getfav3());
-                Popup1.setArguments(b);
-                Popup1.show(fm, "Dialog Fragment");
+                if(cf.getfav3()!=null) {
+                    PopUpFavoritos Popup1 = new PopUpFavoritos();
+                    Bundle b = new Bundle();
+                    b.putString("id", cf.getfav3());
+                    Popup1.setArguments(b);
+                    Popup1.show(fm, "Dialog Fragment");
+                }
             }
         });
 
