@@ -1,7 +1,10 @@
 package com.im2015.movilfacil;
 
+import android.app.AlertDialog;
+import android.app.DialogFragment;
 import android.content.ClipData;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
@@ -41,7 +44,7 @@ public class menu_Inicio extends ActionBarActivity {
         cr = getContentResolver();
         c = new Contactos(cr);
         cf= new ConfiguracionFavoritos(getApplicationContext());
-        //TODO CORREGIR POPUP: cUANDO NO HAY FAVORITO EN UN BOTÓN
+
         //Botones favoritos
         ImageButton ib=null;
         ib= (ImageButton)menu_Inicio.this.findViewById(R.id.ibFav1);
@@ -54,7 +57,20 @@ public class menu_Inicio extends ActionBarActivity {
                     b.putString("id", cf.getfav1());
                     Popup1.setArguments(b);
                     Popup1.show(fm, "Dialog Fragment");
-                }
+                }else{
+
+                AlertDialog ad= new AlertDialog.Builder(menu_Inicio.this).create();
+                ad.setTitle("Selecciona una opción");
+                ad.setButton("Gestionar Favoritos", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent i =  new Intent(menu_Inicio.this,GestorFavoritos.class);
+                        startActivity(i);
+                    }
+                });
+
+                ad.show();
+
+            }
             }
         });
         ib= (ImageButton)menu_Inicio.this.findViewById(R.id.ibFav2);
@@ -67,7 +83,20 @@ public class menu_Inicio extends ActionBarActivity {
                     b.putString("id", cf.getfav2());
                     Popup1.setArguments(b);
                     Popup1.show(fm, "Dialog Fragment");
+                }else{
+
+                    AlertDialog ad= new AlertDialog.Builder(menu_Inicio.this).create();
+                    ad.setTitle("Selecciona una opción");
+                    ad.setButton("Gestionar Favoritos", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent i =  new Intent(menu_Inicio.this,GestorFavoritos.class);
+                            startActivity(i);
+                        }
+                    });
+                    ad.show();
+
                 }
+
             }
         });
         ib= (ImageButton)menu_Inicio.this.findViewById(R.id.ibFav3);
@@ -80,8 +109,20 @@ public class menu_Inicio extends ActionBarActivity {
                     b.putString("id", cf.getfav3());
                     Popup1.setArguments(b);
                     Popup1.show(fm, "Dialog Fragment");
+                }else{
+
+                    AlertDialog ad= new AlertDialog.Builder(menu_Inicio.this).create();
+                    ad.setTitle("Selecciona una opción");
+                    ad.setButton("Gestionar Favoritos", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        Intent i =  new Intent(menu_Inicio.this,GestorFavoritos.class);
+                        startActivity(i);
+                        }
+                    });
+                    ad.show();
+                    }
                 }
-            }
+
         });
 
         Button b = (Button) findViewById(R.id.btnContactos);
