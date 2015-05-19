@@ -5,6 +5,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.List;
@@ -26,6 +28,10 @@ public class ListaContactosActivity extends ActionBarActivity {
     private List<Contacto> list;
     private Contactos c;
     private ConfiguracionFavoritos cf;
+
+    private EditText mSearchEt;
+    private MenuItem mSearchAction;
+    private boolean mSearchOpened;
     @Override
     protected void onResume(){
         super.onResume();
@@ -136,6 +142,34 @@ public class ListaContactosActivity extends ActionBarActivity {
         });
     }
 
+    private void openSearchBar(String queryText) {
+
+        // Set custom view on action bar.
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setCustomView(R.layout.buscar_contactos);
+
+        // Search edit text field setup.
+        EditText mSearchEt = (EditText) actionBar.getCustomView()
+                .findViewById(R.id.etSearch);
+        //mSearchEt.addTextChangedListener(new SearchWatcher());
+        mSearchEt.setText(queryText);
+        mSearchEt.requestFocus();
+
+        // Change search icon accordingly.
+
+
+    }
+
+    private void closeSearchBar() {
+
+        // Remove custom view.
+        getSupportActionBar().setDisplayShowCustomEnabled(false);
+
+        // Change search icon accordingly.
+
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -162,7 +196,15 @@ public class ListaContactosActivity extends ActionBarActivity {
             i.putExtras(b);
             startActivity(i);
         }
-
+        if (id == R.id.search) {
+            if (mSearchOpened) {
+                closeSearchBar();
+            } else {
+                //openSearchBar(mSearchQuery);
+            }
+            return true;
+        }
         return super.onOptionsItemSelected(item);
+
     }
 }

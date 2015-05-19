@@ -38,5 +38,6 @@
     <string name="editar">Editar</string>
     <string name="eliminar">Eliminar</string>
     <string name="carga">"Carga batería: "</string>
+    <string name="buscar">buscar</string>
 
 </resources>
