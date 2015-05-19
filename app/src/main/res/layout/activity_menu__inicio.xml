@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_height="wrap_content" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -12,20 +12,9 @@
         android:paddingLeft="0dp"
         android:paddingRight="0dp"
         android:orientation="vertical" >
-        <Button
-            android:background="#3fffffff"
-            android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ibGestionFavs"
-            android:drawableLeft="@drawable/settings48"
-            android:text="@string/btn_admin_favs"
-
-            android:layout_marginBottom="5dp" />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="75dp"
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
             android:orientation="horizontal" >
@@ -34,8 +23,9 @@
                 android:background="@drawable/favorite_shape"
                 android:scaleType="centerInside"
                 android:nestedScrollingEnabled="true"
-                android:layout_width="109dp"
-                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:id="@+id/ibFav1"
                 android:src="@drawable/user168"
                 />
@@ -43,7 +33,8 @@
                 android:background="@drawable/favorite_shape"
                 android:scaleType="centerInside"
                 android:nestedScrollingEnabled="true"
-                android:layout_width="109dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="fill_parent"
                 android:id="@+id/ibFav2"
                 android:src="@drawable/user168"
@@ -52,7 +43,8 @@
                 android:background="@drawable/favorite_shape"
                 android:scaleType="centerInside"
                 android:nestedScrollingEnabled="true"
-                android:layout_width="109dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="fill_parent"
                 android:id="@+id/ibFav3"
                 android:src="@drawable/user168"
@@ -81,7 +73,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="274dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:paddingTop="20dp"
@@ -98,13 +91,13 @@
             <ProgressBar
                 style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:id="@+id/pbBateria"
                 android:indeterminate="false" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="fill_parent"
                 android:gravity="center"
                 android:id="@+id/tvBateria" />
 
@@ -112,13 +105,15 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="105dp"
+            android:layout_height="wrap_content"
+
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
             android:orientation="horizontal" >
             <Button
                 style="@style/buttons.contactos"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/inicio_btn3"
                 android:id="@+id/btnContactos"
@@ -127,7 +122,8 @@
 
             <Button
                 style="@style/buttons.llamadas"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/inicio_btn1"
                 android:id="@+id/button2"
@@ -136,7 +132,8 @@
 
             <Button
                 style="@style/buttons.mensajes"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/inicio_btn2"
                 android:id="@+id/button3"
