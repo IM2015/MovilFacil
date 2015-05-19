@@ -71,6 +71,10 @@ public class MenssageBox extends ActionBarActivity {
             startActivity(i);
         }
 
+        if(id == R.id.actionHome ){
+            Intent i = new Intent(getBaseContext(),menu_Inicio.class);
+            startActivity(i);
+        }
         return super.onOptionsItemSelected(item);
     }
 }

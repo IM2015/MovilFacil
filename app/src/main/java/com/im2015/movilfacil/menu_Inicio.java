@@ -77,14 +77,7 @@ public class menu_Inicio extends ActionBarActivity {
                 Popup1.show(fm, "Dialog Fragment");
             }
         });
-        Button bFavs= (Button) findViewById(R.id.ibGestionFavs);
-        bFavs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent i = new Intent(v.getContext(),GestorFavoritos.class);
-                startActivity(i);
-            }
-        });
+
         Button b = (Button) findViewById(R.id.btnContactos);
         b.setOnClickListener(new View.OnClickListener() {
                                  @Override

@@ -1,5 +1,6 @@
 package com.im2015.movilfacil;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -65,7 +66,17 @@ public class EnvioMensaje extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
+        if(id == R.id.ayuda){
+            Bundle b = new Bundle();
+            b.putString("lugar","#contactos");
+            Intent i = new Intent(getBaseContext(),ActivityAyuda.class);
+            i.putExtras(b);
+            startActivity(i);
+        }
+        if(id == R.id.actionHome ){
+            Intent i = new Intent(getBaseContext(),menu_Inicio.class);
+            startActivity(i);
+        }
         return super.onOptionsItemSelected(item);
     }
 }

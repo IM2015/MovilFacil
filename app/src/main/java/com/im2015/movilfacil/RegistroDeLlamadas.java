@@ -68,6 +68,10 @@ public class RegistroDeLlamadas extends ActionBarActivity {
             i.putExtras(b);
             startActivity(i);
         }
+        if(id == R.id.actionHome ){
+            Intent i = new Intent(getBaseContext(),menu_Inicio.class);
+            startActivity(i);
+        }
         return super.onOptionsItemSelected(item);
     }
 }

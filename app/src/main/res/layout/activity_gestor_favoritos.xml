@@ -7,108 +7,125 @@
     tools:context="com.im2015.movilfacil.GestorFavoritos">
 <LinearLayout
     android:layout_width="match_parent"
+
     android:layout_height="wrap_content"
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:orientation="vertical">
-
-
     <LinearLayout
+        android:layout_weight="1"
         style="@style/favoriteRow"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0px"
         android:orientation="vertical"
         android:layout_marginBottom="5dp">
-        <TextView
-            style="@style/favoriteRow.title"
-            android:layout_width="fill_parent"
-            android:layout_height="30dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/fav1_title"
-            />
+
         <LinearLayout
+            style="@style/favoriteRow.header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/invisible_area"
+                android:layout_width="0px"
+                android:layout_weight="1"
+                android:layout_height="25dp"
                 android:id="@+id/ibEliminar1"
-                android:src="@drawable/remove11" />
-
+                android:src="@drawable/close_24px" />
+            <TextView
+                style="@style/favoriteRow.title"
+                android:layout_width="0px"
+                android:layout_weight="1"
+                android:layout_height="30dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/fav1_title"
+                />
             <ImageButton
-                android:layout_width="wrap_content"
+                style="@style/invisible_area"
+                android:layout_width="0px"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:id="@+id/ibAdd1"
-                android:src="@drawable/add133" />
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    style="@style/favoriteRow.text"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Antonio"
-                    android:id="@+id/tvFav1Nom"
-                    />
-
-                <TextView
-                    style="@style/favoriteRow.text"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="678412578"
-                    android:id="@+id/tvFav1Tfno"  />
-
-            </LinearLayout>
+                android:src="@drawable/add_24px" />
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                style="@style/favoriteRow.text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Antonio"
+                android:id="@+id/tvFav1Nom"
+                />
+            <TextView
+                style="@style/favoriteRow.text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="678412578"
+                android:id="@+id/tvFav1Tfno"  />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
         <ImageButton
-            android:layout_width="match_parent"
+            android:layout_width="0px"
+            android:layout_weight="1"
             android:layout_height="35dp"
             android:id="@+id/ibBajarFav1"
             android:src="@drawable/arrow483" />
-    </LinearLayout>
+        <ImageButton
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:id="@+id/ibSubirFav2"
+            android:src="@drawable/navigate6" />
+        </LinearLayout>
 
-
-
-
-
-<LinearLayout
+    <LinearLayout
     style="@style/favoriteRow"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:layout_height="0px"
     android:orientation="vertical"
     android:layout_marginBottom="5dp">
-    <ImageButton
-        android:layout_width="fill_parent"
-        android:layout_height="35dp"
-        android:id="@+id/ibSubirFav2"
-        android:src="@drawable/navigate6" />
-    <TextView
-        style="@style/favoriteRow.title"
-        android:layout_width="fill_parent"
-        android:layout_height="30dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/fav2_title"
-        />
-    <LinearLayout
-        style="@style/favoriteRow"
+        <LinearLayout
+        style="@style/favoriteRow.header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageButton
-            android:layout_width="wrap_content"
+            style="@style/invisible_area"
+            android:layout_width="0px"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:id="@+id/ibEliminar2"
-            android:src="@drawable/remove11" />
+            android:src="@drawable/close_24px" />
+
+        <TextView
+            style="@style/favoriteRow.title"
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_height="30dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/fav2_title"
+            />
         <ImageButton
-            android:layout_width="wrap_content"
+            style="@style/invisible_area"
+            android:layout_width="0px"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:id="@+id/ibAdd2"
-            android:src="@drawable/add133" />
+            android:src="@drawable/add_24px" />
+    </LinearLayout>
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -128,55 +145,69 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="678542159"
                 android:id="@+id/tvFav2Tfno" />
-
         </LinearLayout>
-
     </LinearLayout>
-    <ImageButton
-        android:layout_width="fill_parent"
-        android:layout_height="35dp"
-        android:id="@+id/ibBajarFav2"
-        android:src="@drawable/arrow483" />
-</LinearLayout>
 
-
-
-
-
-
-
-<LinearLayout
-    style="@style/favoriteRow"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <ImageButton
-        android:layout_width="fill_parent"
-        android:layout_height="35dp"
-        android:id="@+id/ibSubirFav3"
-        android:src="@drawable/navigate6" />
-    <TextView
-        style="@style/favoriteRow.title"
-        android:layout_width="fill_parent"
-        android:layout_height="30dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/fav3_title"
-        />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:orientation="horizontal">
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ibEliminar3"
-            android:src="@drawable/remove11" />
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:id="@+id/ibBajarFav2"
+            android:src="@drawable/arrow483" />
+
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ibAdd3"
-            android:src="@drawable/add133" />
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:id="@+id/ibSubirFav3"
+            android:src="@drawable/navigate6" />
+        </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+    style="@style/favoriteRow"
+    android:layout_width="match_parent"
+    android:layout_weight="1"
+    android:layout_height="0px"
+    android:orientation="vertical">
+        <LinearLayout
+        style="@style/favoriteRow.header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+            <ImageButton
+                style="@style/invisible_area"
+                android:layout_width="0px"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/ibEliminar3"
+                android:src="@drawable/close_24px" />
+
+            <TextView
+                style="@style/favoriteRow.title"
+                android:layout_width="0px"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/fav3_title"
+                />
+            <ImageButton
+                style="@style/invisible_area"
+                android:layout_width="0px"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/ibAdd3"
+                android:src="@drawable/add_24px" />
+
+        </LinearLayout>
         <LinearLayout
             style="@style/favoriteRow"
             android:layout_width="match_parent"
@@ -189,7 +220,6 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Fernando"
                 android:id="@+id/tvFav3Nom" />
-
             <TextView
                 style="@style/favoriteRow.text"
                 android:layout_width="wrap_content"
@@ -198,7 +228,6 @@
                 android:text="645123753"
                 android:id="@+id/tvFav3Tfno" />
         </LinearLayout>
-    </LinearLayout>
 </LinearLayout>
 
 

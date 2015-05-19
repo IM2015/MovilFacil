@@ -41,8 +41,7 @@ public class popupContactos extends DialogFragment {
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(R.string.dialog_contacts_title)
-                .setItems(titulos, new DialogInterface.OnClickListener() {
+        builder.setItems(titulos, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
                         Intent i;
@@ -53,9 +52,7 @@ public class popupContactos extends DialogFragment {
                                 break;
                             case 1:
                                 i = new Intent(getActivity(),EnvioMensaje.class);
-
                                 b = new Bundle();
-
                                 b.putString("id",contacto.getId());
                                 b.putString("nombre",contacto.getNombre());
                                 b.putString("numero",contacto.getNumero());
@@ -65,9 +62,7 @@ public class popupContactos extends DialogFragment {
                                 break;
                             case 2:
                                 i = new Intent(getActivity(),editarContacto.class);
-
                                 b = new Bundle();
-
                                 b.putString("id",contacto.getId());
                                 b.putString("nombre",contacto.getNombre());
                                 b.putString("numero",contacto.getNumero());
