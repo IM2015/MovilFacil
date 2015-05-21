@@ -11,6 +11,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.view.View;
+import android.widget.Button;
 
 
 public class PopUpFavoritos extends DialogFragment {
@@ -31,9 +33,10 @@ public class PopUpFavoritos extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
         if(titulos == null) {
-            titulos = new String[2];
+            titulos = new String[3];
             titulos[0] = this.getString(R.string.llamar);
             titulos[1] = this.getString(R.string.mensaje);
+            titulos[2] = "Gestionar Favoritos"; 
         }
         Bundle args = this.getArguments();
         String id = args.getString("id");
@@ -49,6 +52,7 @@ public class PopUpFavoritos extends DialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent i;
                         Bundle b;
+
                         switch (which) {
                             case 0:
                                 new IntentManager(getActivity()).llamar(contacto.getNumero());
@@ -63,6 +67,10 @@ public class PopUpFavoritos extends DialogFragment {
                                 b.putString("numero",contacto.getNumero());
                                 //editarContacto ec = new editarContacto();
                                 i.putExtras(b);
+                                startActivity(i);
+                                break;
+                            case 2:
+                                i =  new Intent(getActivity(),GestorFavoritos.class);
                                 startActivity(i);
                                 break;
 

@@ -59,8 +59,7 @@ public class PopupLlamadas extends DialogFragment {
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(R.string.dialog_contacts_title)
-                .setItems(titulos, new DialogInterface.OnClickListener() {
+        builder.setItems(titulos, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
                         Intent i;

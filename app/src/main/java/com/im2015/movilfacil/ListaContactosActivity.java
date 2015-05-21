@@ -4,6 +4,9 @@ import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -16,6 +19,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import java.io.BufferedInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.List;
 
 
@@ -27,11 +33,13 @@ public class ListaContactosActivity extends ActionBarActivity {
     private FragmentManager fm = getSupportFragmentManager();
     private List<Contacto> list;
     private Contactos c;
+    Contacto contacto;
     private ConfiguracionFavoritos cf;
 
     private EditText mSearchEt;
     private MenuItem mSearchAction;
     private boolean mSearchOpened;
+    popupContactos Popup1;
     @Override
     protected void onResume(){
         super.onResume();
@@ -45,6 +53,7 @@ public class ListaContactosActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> adapter, View view,
                                     int position, long arg) {
                 Contacto c = (Contacto) adapter.getItemAtPosition(position);
+                contacto=c;
                 //Comprobamos si estamos añadiendo un favorito
                 Bundle args = getIntent().getExtras();
                 if(args!=null){
@@ -67,7 +76,7 @@ public class ListaContactosActivity extends ActionBarActivity {
                     }
 
                 }else {
-                    popupContactos Popup1 = new popupContactos();
+                    Popup1 = new popupContactos();
                     Bundle b = new Bundle();
 
                     b.putString("id", c.getId());
@@ -120,7 +129,7 @@ public class ListaContactosActivity extends ActionBarActivity {
                     }
 
                 }else {
-                    popupContactos Popup1 = new popupContactos();
+                    Popup1 = new popupContactos();
                     Bundle b = new Bundle();
 
                     b.putString("id", c.getId());
@@ -196,6 +205,11 @@ public class ListaContactosActivity extends ActionBarActivity {
             i.putExtras(b);
             startActivity(i);
         }
+        if(id == R.id.actionHome ){
+            Intent i = new Intent(getBaseContext(),menu_Inicio.class);
+            startActivity(i);
+        }
+
         if (id == R.id.search) {
             if (mSearchOpened) {
                 closeSearchBar();
@@ -206,5 +220,9 @@ public class ListaContactosActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
 
+    }
+
+    @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Popup1.onActivityResult(requestCode,resultCode,data);
     }
 }

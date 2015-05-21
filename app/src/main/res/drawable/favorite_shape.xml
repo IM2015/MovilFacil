@@ -3,7 +3,7 @@
         android:radius="0dp"
         />
     <solid
-        android:color="#3fffffff"
+        android:color="@color/custom_theme_color3"
         />
     <padding
         android:left="5dp"

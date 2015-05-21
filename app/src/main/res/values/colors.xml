@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="message_buttons">#640008e5</color>
+    <color name="custom_theme_color3">#037E8C</color>
+    <color name="custom_theme_color">#bb121212</color>
+    <color name="custom_theme_color2">#bbFFFFFA</color>
+    <color name="invisible_zone">#00FFFFFF</color>
 </resources>
