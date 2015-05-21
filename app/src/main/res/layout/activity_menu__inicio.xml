@@ -28,7 +28,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:id="@+id/ibFav1"
-                android:src="@drawable/user168"
+
                 />
             <ImageButton
                 style="?android:attr/borderlessButtonStyle"
@@ -38,7 +38,6 @@
                 android:layout_weight="1"
                 android:layout_height="fill_parent"
                 android:id="@+id/ibFav2"
-                android:src="@drawable/user168"
                 />
             <ImageButton
                 style="?android:attr/borderlessButtonStyle"
@@ -47,7 +46,7 @@
                 android:layout_weight="1"
                 android:layout_height="fill_parent"
                 android:id="@+id/ibFav3"
-                android:src="@drawable/user168"
+
                 />
         </LinearLayout>
         <LinearLayout
