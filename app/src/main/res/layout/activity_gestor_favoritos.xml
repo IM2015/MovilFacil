@@ -21,7 +21,7 @@
         android:layout_marginBottom="5dp">
 
         <LinearLayout
-            style="@style/favoriteRow.header"
+            style="@style/Rowheader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -33,7 +33,7 @@
                 android:id="@+id/ibEliminar1"
                 android:src="@drawable/close_24px" />
             <TextView
-                style="@style/favoriteRow.title"
+                style="@style/Rowtitle"
                 android:layout_width="0px"
                 android:layout_weight="1"
                 android:layout_height="30dp"
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                style="@style/favoriteRow.text"
+                style="@style/Rowtext"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -62,7 +62,7 @@
                 android:id="@+id/tvFav1Nom"
                 />
             <TextView
-                style="@style/favoriteRow.text"
+                style="@style/Rowtext"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -98,7 +98,7 @@
     android:orientation="vertical"
     android:layout_marginBottom="5dp">
         <LinearLayout
-        style="@style/favoriteRow.header"
+        style="@style/Rowheader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -111,7 +111,7 @@
             android:src="@drawable/close_24px" />
 
         <TextView
-            style="@style/favoriteRow.title"
+            style="@style/Rowtitle"
             android:layout_width="0px"
             android:layout_weight="1"
             android:layout_height="30dp"
@@ -128,20 +128,20 @@
     </LinearLayout>
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:orientation="vertical">
             <TextView
-                style="@style/favoriteRow.text"
+                style="@style/Rowtext"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="María"
                 android:id="@+id/tvFav2Nom" />
 
             <TextView
-                style="@style/favoriteRow.text"
+                style="@style/Rowtext"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="678542159"
                 android:id="@+id/tvFav2Tfno" />
@@ -179,7 +179,7 @@
     android:layout_height="0px"
     android:orientation="vertical">
         <LinearLayout
-        style="@style/favoriteRow.header"
+        style="@style/Rowheader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -192,7 +192,7 @@
                 android:src="@drawable/close_24px" />
 
             <TextView
-                style="@style/favoriteRow.title"
+                style="@style/Rowtitle"
                 android:layout_width="0px"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -205,23 +205,23 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:id="@+id/ibAdd3"
+                android:layout_gravity="start"
                 android:src="@drawable/add_24px" />
 
         </LinearLayout>
         <LinearLayout
-            style="@style/favoriteRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                style="@style/favoriteRow.text"
+                style="@style/Rowtext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Fernando"
                 android:id="@+id/tvFav3Nom" />
             <TextView
-                style="@style/favoriteRow.text"
+                style="@style/Rowtext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"

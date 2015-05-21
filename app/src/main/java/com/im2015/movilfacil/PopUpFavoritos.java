@@ -43,7 +43,6 @@ public class PopUpFavoritos extends DialogFragment {
         this.contacto = c.getContactoId(id);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Selecciona una opción");
         builder.setItems(titulos, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {

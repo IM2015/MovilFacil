@@ -86,7 +86,6 @@ public class menu_Inicio extends ActionBarActivity {
                 }else{
 
                     AlertDialog ad= new AlertDialog.Builder(menu_Inicio.this).create();
-                    ad.setTitle("Selecciona una opción");
                     ad.setButton("Gestionar Favoritos", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             Intent i =  new Intent(menu_Inicio.this,GestorFavoritos.class);
