@@ -200,7 +200,7 @@ public class ListaContactosActivity extends ActionBarActivity {
             if (mSearchOpened) {
                 closeSearchBar();
             } else {
-                //openSearchBar(mSearchQuery);
+                openSearchBar("test");
             }
             return true;
         }
