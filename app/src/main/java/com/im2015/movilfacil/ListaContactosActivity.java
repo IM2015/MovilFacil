@@ -11,6 +11,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,13 +42,17 @@ public class ListaContactosActivity extends ActionBarActivity {
     private MenuItem mSearchAction;
     private boolean mSearchOpened;
     popupContactos Popup1;
+    private List<Contacto> listaDeRepuesto;
+    private final Context context = this;
     @Override
     protected void onResume(){
+        c = new Contactos(cr);
         super.onResume();
         this.listView = (ListView) findViewById(R.id.listViewContactos);
-        this.list = c.getContactos();
+        listaDeRepuesto = c.getContactos();
+        this.list = listaDeRepuesto;
         this.listView.setAdapter(new ItemAdapter(this,list));
-
+        mSearchOpened=false;
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -92,13 +98,16 @@ public class ListaContactosActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         cr = getContentResolver();
+        c = new Contactos(cr);
         cr.acquireContentProviderClient("");
         setContentView(R.layout.activity_lista_contactos);
+        listaDeRepuesto = c.getContactos();
+        this.list = listaDeRepuesto;
         this.listView = (ListView) findViewById(R.id.listViewContactos);
         cf= new ConfiguracionFavoritos(getApplicationContext());
         c = new Contactos(cr);
-        this.list = c.getContactos();
         this.listView.setAdapter(new ItemAdapter(this,list));
 
 
@@ -110,8 +119,8 @@ public class ListaContactosActivity extends ActionBarActivity {
                 //Comprobamos si estamos añadiendo un favorito
                 Bundle args = getIntent().getExtras();
                 String numFav = args.getString("NumFav");
-                if(numFav!=null){
-                    Intent i= new Intent(getApplicationContext(),GestorFavoritos.class);
+                if (numFav != null) {
+                    Intent i = new Intent(getApplicationContext(), GestorFavoritos.class);
                     switch (numFav) {
                         case "1":
                             cf.setFav1(c.getId());
@@ -128,7 +137,7 @@ public class ListaContactosActivity extends ActionBarActivity {
 
                     }
 
-                }else {
+                } else {
                     Popup1 = new popupContactos();
                     Bundle b = new Bundle();
 
@@ -159,8 +168,33 @@ public class ListaContactosActivity extends ActionBarActivity {
         actionBar.setCustomView(R.layout.buscar_contactos);
 
         // Search edit text field setup.
-        EditText mSearchEt = (EditText) actionBar.getCustomView()
+        final EditText mSearchEt = (EditText) actionBar.getCustomView()
                 .findViewById(R.id.etSearch);
+        mSearchEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String nombreUpper = mSearchEt.getText().toString().toLowerCase();
+                list.clear();
+
+                for(int i = 0 ; i<listaDeRepuesto.size();i++){
+                    Contacto co = listaDeRepuesto.get(i);
+                    if(co.getNombre().toUpperCase().contains(nombreUpper) || co.getNumero().contains(nombreUpper))
+                        list.add(listaDeRepuesto.get(i));
+                }
+                listView.setAdapter(new ItemAdapter(context,list));
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         //mSearchEt.addTextChangedListener(new SearchWatcher());
         mSearchEt.setText(queryText);
         mSearchEt.requestFocus();
@@ -184,6 +218,9 @@ public class ListaContactosActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_lista_contactos, menu);
+       // mSearchEt = (EditText) getSupportActionBar().getCustomView()
+              //  .findViewById(R.id.search);
+
         return true;
     }
 
@@ -214,7 +251,7 @@ public class ListaContactosActivity extends ActionBarActivity {
             if (mSearchOpened) {
                 closeSearchBar();
             } else {
-                openSearchBar("test");
+                openSearchBar("");
             }
             return true;
         }
