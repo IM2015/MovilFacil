@@ -50,7 +50,7 @@ public class ListaContactosActivity extends ActionBarActivity {
         super.onResume();
         this.listView = (ListView) findViewById(R.id.listViewContactos);
         listaDeRepuesto = c.getContactos();
-        this.list = listaDeRepuesto;
+        this.list = c.getContactos();
         this.listView.setAdapter(new ItemAdapter(this,list));
         mSearchOpened=false;
 
@@ -104,7 +104,7 @@ public class ListaContactosActivity extends ActionBarActivity {
         cr.acquireContentProviderClient("");
         setContentView(R.layout.activity_lista_contactos);
         listaDeRepuesto = c.getContactos();
-        this.list = listaDeRepuesto;
+        this.list = c.getContactos();
         this.listView = (ListView) findViewById(R.id.listViewContactos);
         cf= new ConfiguracionFavoritos(getApplicationContext());
         c = new Contactos(cr);
@@ -168,8 +168,7 @@ public class ListaContactosActivity extends ActionBarActivity {
         actionBar.setCustomView(R.layout.buscar_contactos);
 
         // Search edit text field setup.
-        final EditText mSearchEt = (EditText) actionBar.getCustomView()
-                .findViewById(R.id.etSearch);
+        final EditText mSearchEt = (EditText) actionBar.getCustomView().findViewById(R.id.etSearch);
         mSearchEt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -178,7 +177,13 @@ public class ListaContactosActivity extends ActionBarActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String nombreUpper = mSearchEt.getText().toString().toLowerCase();
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String nombreUpper = mSearchEt.getText().toString().toUpperCase();
                 list.clear();
 
                 for(int i = 0 ; i<listaDeRepuesto.size();i++){
@@ -187,12 +192,6 @@ public class ListaContactosActivity extends ActionBarActivity {
                         list.add(listaDeRepuesto.get(i));
                 }
                 listView.setAdapter(new ItemAdapter(context,list));
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
             }
         });
         //mSearchEt.addTextChangedListener(new SearchWatcher());
