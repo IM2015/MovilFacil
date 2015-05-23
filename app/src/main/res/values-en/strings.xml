@@ -32,6 +32,7 @@
     <string name="mensaje">Send Message</string>
     <string name="editar">Edit</string>
     <string name="eliminar">Delete</string>
-    <string name="carga">"Batery charge: "</string>
+    <string name="carga">Batery charge: </string>
     <string name="buscar">search</string>
+    <string name="unknow_num">Unknow number</string>
 </resources>

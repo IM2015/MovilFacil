@@ -24,6 +24,7 @@ import android.widget.ListView;
 import java.io.BufferedInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -49,8 +50,8 @@ public class ListaContactosActivity extends ActionBarActivity {
         c = new Contactos(cr);
         super.onResume();
         this.listView = (ListView) findViewById(R.id.listViewContactos);
-        listaDeRepuesto = c.getContactos();
-        this.list = c.getContactos();
+        listaDeRepuesto = new ArrayList<Contacto>();
+        this.list =c.getContactos() ;
         this.listView.setAdapter(new ItemAdapter(this,list));
         mSearchOpened=false;
 
@@ -103,7 +104,7 @@ public class ListaContactosActivity extends ActionBarActivity {
         c = new Contactos(cr);
         cr.acquireContentProviderClient("");
         setContentView(R.layout.activity_lista_contactos);
-        listaDeRepuesto = c.getContactos();
+        listaDeRepuesto = new ArrayList<Contacto>();
         this.list = c.getContactos();
         this.listView = (ListView) findViewById(R.id.listViewContactos);
         cf= new ConfiguracionFavoritos(getApplicationContext());
@@ -184,15 +185,26 @@ public class ListaContactosActivity extends ActionBarActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String nombreUpper = mSearchEt.getText().toString().toUpperCase();
-                list.clear();
-
-                for(int i = 0 ; i<listaDeRepuesto.size();i++){
-                    Contacto co = listaDeRepuesto.get(i);
-                    if(co.getNombre().toUpperCase().contains(nombreUpper) || co.getNumero().contains(nombreUpper))
-                        list.add(listaDeRepuesto.get(i));
+                    int i = 0;
+                    while(i < list.size()){
+                        Contacto co = list.get(i);
+                        if (!co.getNombre().toUpperCase().contains(nombreUpper) && !co.getNumero().contains(nombreUpper))
+                            listaDeRepuesto.add(list.remove(i));
+                        else
+                            i++;
+                    }
+                    i = 0;
+                    while(i < listaDeRepuesto.size()) {
+                        Contacto co = listaDeRepuesto.get(i);
+                        if (co.getNombre().toUpperCase().contains(nombreUpper) || co.getNumero().contains(nombreUpper))
+                            list.add(listaDeRepuesto.remove(i));
+                        else{
+                            i++;
+                        }
+                    }
+                    listView.setAdapter(new ItemAdapter(context, list));
                 }
-                listView.setAdapter(new ItemAdapter(context,list));
-            }
+
         });
         //mSearchEt.addTextChangedListener(new SearchWatcher());
         mSearchEt.setText(queryText);
