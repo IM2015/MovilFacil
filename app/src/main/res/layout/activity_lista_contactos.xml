@@ -12,7 +12,8 @@
         android:paddingRight="0dp"
         android:orientation="vertical"  >
         <Button
-            android:background="#3fffffff"
+
+            android:background="@drawable/buttonshape"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Agregar contacto"

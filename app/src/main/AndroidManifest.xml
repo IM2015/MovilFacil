@@ -109,7 +109,11 @@
 
         <activity
             android:name=".EnvioMensaje"
-            android:label="@string/title_activity_envio_mensaje" >
+            android:label="@string/title_activity_envio_mensaje"
+            android:parentActivityName=".ListaContactosActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.im2015.movilfacil.ListaContactosActivity" />
         </activity>
 
         <activity

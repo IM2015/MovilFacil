@@ -52,27 +52,30 @@ public class SmsAdapter extends BaseAdapter {
 // Create a new view into the list.
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            rowView = inflater.inflate(R.layout.llamada_item, parent, false);
+            rowView = inflater.inflate(R.layout.mensaje_item, parent, false);
         }
 // Set data into the view.
         ImageView ivItem = (ImageView) rowView.findViewById(R.id.ivImagen);
         TextView tvTitle = (TextView) rowView.findViewById(R.id.tvNombre);
         TextView tvTfno= (TextView) rowView.findViewById(R.id.tvTfno);
         TextView tvDate = (TextView) rowView.findViewById(R.id.tvDate);
+        TextView tvTexto = (TextView) rowView.findViewById(R.id.tvTexto);
         Mensaje item = this.items.get(position);
         Contacto c = contactos.getContactoPorTelefono(item.getTelefono());//contactos.getContactoPorTelefono(item.getTelefono());
         if(c == null){
-            tvTitle.setText(item.getTelefono());
+            tvTitle.setText(R.string.unknow_num);
+            tvTfno.setText(item.getTelefono());
+            tvTexto.setText(item.getTexto());
         }else{
             tvTitle.setText(c.getNombre());
             tvTfno.setText(item.getTelefono());
+            tvTexto.setText(item.getTexto());
         }
         if(item.getTipo() == Mensaje.Tipo.recibido){
-
-            ivItem.setImageResource(R.drawable.incoming3);
+            ivItem.setImageResource(R.drawable.inbox_sms_64x);
         }
         if(item.getTipo() == Mensaje.Tipo.enviado){
-            ivItem.setImageResource(R.drawable.outgoing3);
+            ivItem.setImageResource(R.drawable.send_sms_64x);
         }
         Calendar ahora = Calendar.getInstance();
         Calendar calendar = Calendar.getInstance();

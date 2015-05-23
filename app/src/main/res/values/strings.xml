@@ -33,4 +33,6 @@
     <string name="fav1_title">Favorito 1</string>
     <string name="fav2_title">Favorito 2</string>
     <string name="fav3_title">Favorito 3</string>
+    <string name="unknow_num">Numero Desconocido</string>
+
 </resources>

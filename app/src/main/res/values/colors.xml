@@ -5,4 +5,6 @@
     <color name="custom_theme_color">#bb121212</color>
     <color name="custom_theme_color2">#bbFFFFFA</color>
     <color name="invisible_zone">#00FFFFFF</color>
+    <color name="text">#151618</color>
+    <color name="separator">#77FFFFFF</color>
 </resources>
