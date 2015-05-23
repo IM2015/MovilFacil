@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.os.BatteryManager;
 import android.support.v4.app.FragmentManager;
@@ -48,6 +49,7 @@ public class menu_Inicio extends ActionBarActivity {
         //Botones favoritos
         ImageButton ib=null;
         ib= (ImageButton)menu_Inicio.this.findViewById(R.id.ibFav1);
+        ib.setAdjustViewBounds(true);
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -74,9 +76,11 @@ public class menu_Inicio extends ActionBarActivity {
             }
         });
         ib= (ImageButton)menu_Inicio.this.findViewById(R.id.ibFav2);
+        ib.setAdjustViewBounds(true);
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
+
                 if(cf.getfav2()!=null) {
                     PopUpFavoritos Popup1 = new PopUpFavoritos();
                     Bundle b = new Bundle();
@@ -99,6 +103,7 @@ public class menu_Inicio extends ActionBarActivity {
             }
         });
         ib= (ImageButton)menu_Inicio.this.findViewById(R.id.ibFav3);
+        ib.setAdjustViewBounds(true);
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){

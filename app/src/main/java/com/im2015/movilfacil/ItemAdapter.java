@@ -44,6 +44,7 @@ public class ItemAdapter extends BaseAdapter {
         ImageView ivItem = (ImageView) rowView.findViewById(R.id.ivImagen);
         TextView tvTitle = (TextView) rowView.findViewById(R.id.tvNombre);
         TextView tvTfno= (TextView) rowView.findViewById(R.id.tvTfno);
+
         Contacto item = this.items.get(position);
         tvTitle.setText(item.getNombre());
         tvTfno.setText(item.getNumero());

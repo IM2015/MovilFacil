@@ -56,7 +56,8 @@ public class LlamadaAdapter extends BaseAdapter {
         Llamada item = this.items.get(position);
         Contacto c = contactos.getContactoPorTelefono(item.getTelefono());
         if(c == null){
-            tvTitle.setText(item.getTelefono());
+            tvTitle.setText(R.string.unknow_num);
+            tvTfno.setText(item.getTelefono());
         }else{
             tvTitle.setText(c.getNombre());
             tvTfno.setText(item.getTelefono());
