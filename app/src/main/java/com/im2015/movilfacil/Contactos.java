@@ -138,7 +138,7 @@ public class Contactos {
                 ContactsContract.CommonDataKinds.Phone._ID,
                 ContactsContract.CommonDataKinds.Phone.PHOTO_ID};
 
-        Cursor people = cr.query(uri, /* projection */null, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME.toUpperCase()+" ASC");
+        Cursor people = cr.query(uri, /* projection */null, null, null, "upper("+ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + ") ASC");
         int indexName = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
         int indexNumber = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
         int indexId=people.getColumnIndex(ContactsContract.CommonDataKinds.Phone._ID);

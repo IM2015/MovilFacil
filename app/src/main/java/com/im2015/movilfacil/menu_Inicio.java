@@ -7,6 +7,12 @@ import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
@@ -16,6 +22,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.internal.view.menu.MenuView;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +32,9 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class menu_Inicio extends ActionBarActivity {
@@ -62,7 +72,7 @@ public class menu_Inicio extends ActionBarActivity {
                 }else{
 
                 AlertDialog ad= new AlertDialog.Builder(menu_Inicio.this).create();
-                ad.setTitle("Selecciona una opción");
+
                 ad.setButton("Gestionar Favoritos", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent i =  new Intent(menu_Inicio.this,GestorFavoritos.class);
@@ -116,8 +126,8 @@ public class menu_Inicio extends ActionBarActivity {
                 }else{
 
                     AlertDialog ad= new AlertDialog.Builder(menu_Inicio.this).create();
-                    ad.setTitle("Selecciona una opción");
-                    ad.setButton("Gestionar Favoritos", new DialogInterface.OnClickListener() {
+
+                    ad.setButton(getString(R.string.GestionarFavoritos), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                         Intent i =  new Intent(menu_Inicio.this,GestorFavoritos.class);
                         startActivity(i);
@@ -194,7 +204,44 @@ public class menu_Inicio extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+//            return true;
+//
+//            int i;
+//            i=0;
+            Intent mainIntent =new Intent(android.provider.Settings.ACTION_SETTINGS);
+
+            startActivity(mainIntent);
+        }
+        if (id == R.id.action_Apps){
+            final Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
+            mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+            List<ResolveInfo> ril = getPackageManager().queryIntentActivities(mainIntent, 0);
+            List<String> componentList = new ArrayList<String>();
+            String name = null;
+
+            for (ResolveInfo ri : ril) {
+                if (ri.activityInfo != null) {
+                    Resources res = null;
+                    try {
+                        res = getPackageManager().getResourcesForApplication(ri.activityInfo.applicationInfo);
+                    } catch (PackageManager.NameNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    if (ri.activityInfo.labelRes != 0) {
+                        //ActivityInfo ai = ri.activityInfo;
+                       // name = res.getString(ri.activityInfo.labelRes)+" ";
+                        //name = ai.processName;
+                        //Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage(name);
+                        //startActivity( LaunchIntent );
+                    } else {
+                        name = ri.activityInfo.applicationInfo.loadLabel(
+                                getPackageManager()).toString();
+                    }
+                    componentList.add(name);
+                }
+            }
+            Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage(name);
+            startActivity( LaunchIntent );
         }
         if(id == R.id.ayuda){
             Bundle b = new Bundle();

@@ -5,6 +5,8 @@
 
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_Apps" android:title="@string/action_Apps"
+        android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/ayuda" android:title="@string/ayuda"
         android:orderInCategory="100" android:icon="@drawable/help" app:showAsAction="always" />
 

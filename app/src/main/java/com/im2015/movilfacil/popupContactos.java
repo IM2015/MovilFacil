@@ -52,13 +52,13 @@ public class popupContactos extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
         if(titulos == null) {
-            titulos = new String[5];
+            titulos = new String[6];
             titulos[0] = this.getString(R.string.llamar);
             titulos[1] = this.getString(R.string.mensaje);
             titulos[2] = this.getString(R.string.editar);
             titulos[3] = this.getString(R.string.eliminar);
-            titulos[4]="Seleccionar foto";
-            titulos[5]="Hacer foto";
+            titulos[4]=this.getString(R.string.SeleccionarFoto);
+            titulos[5]=this.getString(R.string.HacerFoto);
         }
         Bundle args = this.getArguments();
          String id = args.getString("id");
@@ -68,7 +68,7 @@ public class popupContactos extends DialogFragment {
         name = Environment.getExternalStorageDirectory() + "/test.jpg";
         activ=this.getActivity();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(R.string.dialog_contacts_title);
+
         builder.setItems(titulos, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {

@@ -41,5 +41,10 @@
     <string name="eliminar">Eliminar</string>
     <string name="carga">"Carga batería: "</string>
     <string name="buscar">buscar</string>
+    <string name="SeleccionarFoto">Seleccionar foto</string>
+    <string name="HacerFoto">Hacer foto</string>
+    <string name="AgregarContacto">Añadir contacto</string>
+    <string name="GestionarFavoritos">Gestionar Favoritos</string>
+    <string name="action_Apps">Aplicaciones</string>
 
 </resources>

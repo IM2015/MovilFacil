@@ -16,7 +16,7 @@
             android:background="@drawable/buttonshape"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Agregar contacto"
+            android:text="@string/AgregarContacto"
             android:id="@+id/btnAgregarContacto"
             android:layout_marginBottom="5dp" />
         <ListView
