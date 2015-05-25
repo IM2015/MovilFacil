@@ -215,33 +215,34 @@ public class menu_Inicio extends ActionBarActivity {
         if (id == R.id.action_Apps){
             final Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
             mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-            List<ResolveInfo> ril = getPackageManager().queryIntentActivities(mainIntent, 0);
-            List<String> componentList = new ArrayList<String>();
-            String name = null;
-
-            for (ResolveInfo ri : ril) {
-                if (ri.activityInfo != null) {
-                    Resources res = null;
-                    try {
-                        res = getPackageManager().getResourcesForApplication(ri.activityInfo.applicationInfo);
-                    } catch (PackageManager.NameNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    if (ri.activityInfo.labelRes != 0) {
-                        //ActivityInfo ai = ri.activityInfo;
-                       // name = res.getString(ri.activityInfo.labelRes)+" ";
-                        //name = ai.processName;
-                        //Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage(name);
-                        //startActivity( LaunchIntent );
-                    } else {
-                        name = ri.activityInfo.applicationInfo.loadLabel(
-                                getPackageManager()).toString();
-                    }
-                    componentList.add(name);
-                }
-            }
-            Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage(name);
-            startActivity( LaunchIntent );
+            startActivity(mainIntent);
+//            List<ResolveInfo> ril = getPackageManager().queryIntentActivities(mainIntent, 0);
+//            List<String> componentList = new ArrayList<String>();
+//            String name = null;
+//
+//            for (ResolveInfo ri : ril) {
+//                if (ri.activityInfo != null) {
+//                    Resources res = null;
+//                    try {
+//                        res = getPackageManager().getResourcesForApplication(ri.activityInfo.applicationInfo);
+//                    } catch (PackageManager.NameNotFoundException e) {
+//                        e.printStackTrace();
+//                    }
+//                    if (ri.activityInfo.labelRes != 0) {
+//                        //ActivityInfo ai = ri.activityInfo;
+//                       // name = res.getString(ri.activityInfo.labelRes)+" ";
+//                        //name = ai.processName;
+//                        //Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage(name);
+//                        //startActivity( LaunchIntent );
+//                    } else {
+//                        name = ri.activityInfo.applicationInfo.loadLabel(
+//                                getPackageManager()).toString();
+//                    }
+//                    componentList.add(name);
+//                }
+//            }
+//            Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage(name);
+//            startActivity( LaunchIntent );
         }
         if(id == R.id.ayuda){
             Bundle b = new Bundle();
