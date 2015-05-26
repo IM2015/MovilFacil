@@ -213,9 +213,12 @@ public class menu_Inicio extends ActionBarActivity {
             startActivity(mainIntent);
         }
         if (id == R.id.action_Apps){
-            final Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
-            mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-            startActivity(mainIntent);
+            //final Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
+            //mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+           // startActivity(mainIntent);
+            Intent i = new Intent(getBaseContext(),AppListActivity.class);
+
+            startActivity(i);
 //            List<ResolveInfo> ril = getPackageManager().queryIntentActivities(mainIntent, 0);
 //            List<String> componentList = new ArrayList<String>();
 //            String name = null;

@@ -34,7 +34,6 @@
     <string name="fav2_title">Favorito 2</string>
     <string name="fav3_title">Favorito 3</string>
     <string name="unknow_num">Numero Desconocido</string>
-
     <string name="llamar">Llamar</string>
     <string name="mensaje">Mensaje</string>
     <string name="editar">Editar</string>
@@ -46,5 +45,6 @@
     <string name="AgregarContacto">Añadir contacto</string>
     <string name="GestionarFavoritos">Gestionar Favoritos</string>
     <string name="action_Apps">Aplicaciones</string>
+    <string name="title_activity_apps">Apps</string>
 
 </resources>
