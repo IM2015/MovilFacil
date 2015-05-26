@@ -1,21 +1,26 @@
 package com.im2015.movilfacil;
 
-import android.content.Intent;
+import android.graphics.drawable.Drawable;
 
 /**
  * Created by Carlos on 26/05/2015.
  */
 public class App {
+    private final Drawable drawable;
     private String nombre;
-    private Intent intent;
+    private String intent;
 
-    public App(Intent intent, String nombre) {
+    public App(String intent, String nombre) {
         this.intent = intent;
         this.nombre = nombre;
+        drawable=null;
     }
 
-    public App(String name) {
-        this.nombre=name;
+
+    public App(String intent, String name, Drawable d) {
+        this.intent = intent;
+        this.nombre = name;
+        this.drawable = d;
     }
 
     public String getNombre() {
@@ -26,11 +31,15 @@ public class App {
         this.nombre = nombre;
     }
 
-    public Intent getIntent() {
+    public String getIntent() {
         return intent;
     }
 
-    public void setIntent(Intent intent) {
+    public void setIntent(String intent) {
         this.intent = intent;
+    }
+
+    public Drawable getDrawable() {
+        return drawable;
     }
 }

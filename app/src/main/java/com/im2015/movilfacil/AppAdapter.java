@@ -48,7 +48,7 @@ public class AppAdapter extends BaseAdapter {
         App item = this.items.get(position);
         tvTitle.setText(item.getNombre());
         //tv.setText(item.getIntent());
-        //ivItem.setImageResource(item.getImagen()); //Cuando añadamos imagenes a los contactos descomentar y quitar src del imageview
+        ivItem.setImageDrawable(item.getDrawable()); //Cuando añadamos imagenes a los contactos descomentar y quitar src del imageview
         return rowView;
     }
 }

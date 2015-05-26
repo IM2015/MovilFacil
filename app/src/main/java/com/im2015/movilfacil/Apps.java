@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +16,12 @@ import java.util.List;
 public class Apps {
     public static List<App> getApps(PackageManager pkmgr) {
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
+        mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
         List<ResolveInfo> ril = pkmgr.queryIntentActivities(mainIntent, 0);
-        ArrayList<App> lapps = new ArrayList<App>();
-        String name = null;
+        List<App> componentList = new ArrayList<App>();
         String intent = null;
+        String name = null;
+        Drawable d = null;
         for (ResolveInfo ri : ril) {
             if (ri.activityInfo != null) {
                 Resources res = null;
@@ -28,19 +31,29 @@ public class Apps {
                     e.printStackTrace();
                 }
                 if (ri.activityInfo.labelRes != 0) {
-                    /*ActivityInfo ai = ri.activityInfo;
-                    name = res.getString(ri.activityInfo.labelRes) + " ";
-                    name = ai.processName;*/
-
+                    name = res.getString(ri.activityInfo.labelRes);
+                    intent = ri.activityInfo.processName;
+                    int icon = ri.activityInfo.getIconResource();
+                    try {
+                        d = pkmgr.getActivityIcon(pkmgr.getLaunchIntentForPackage(intent));
+                    } catch (PackageManager.NameNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    componentList.add(new App(intent,name,d));
                 } else {
                     name = ri.activityInfo.applicationInfo.loadLabel(
                             pkmgr).toString();
+                    intent = ri.activityInfo.processName;
+                    /*try {
+                        d = pkmgr.getActivityIcon(pkmgr.getLaunchIntentForPackage(intent));
+                    } catch (PackageManager.NameNotFoundException e) {
+                        e.printStackTrace();
+                    }*/
                 }
-                lapps.add(new App(name));
+
             }
         }
-        //Intent LaunchIntent = pkmgr.getLaunchIntentForPackage(name);
-        return lapps;
+        return componentList;
 
     }
 

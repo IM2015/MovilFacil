@@ -32,7 +32,7 @@ public class AppListActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> adapter, View view,
                                     int position, long arg) {
                 App a = (App) adapter.getItemAtPosition(position);
-                Intent i = getPackageManager().getLaunchIntentForPackage(a.getNombre());
+                Intent i = getPackageManager().getLaunchIntentForPackage(a.getIntent());
                 startActivity(i);
 
             }
