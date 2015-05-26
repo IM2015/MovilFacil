@@ -107,7 +107,7 @@ public class popupContactos extends DialogFragment {
                                 Context context = getActivity().getApplicationContext();
                                 Contactos contactos = new Contactos(context.getContentResolver());
                                 contactos.eliminarContacto(contacto);
-
+                                getActivity().finish();
                                 break;
                             case 4:
                                 i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);

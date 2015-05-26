@@ -25,6 +25,7 @@ import java.util.List;
 public class Contactos {
     ContentResolver cr;
     private static List<Contacto> lc;
+    private static int  numContactos=0;
 
     public Contactos(ContentResolver contentResolver){
         cr=contentResolver;
@@ -61,6 +62,7 @@ public class Contactos {
         }
         lc = null;
         lc = getContactos();
+        numContactos = lc.size();
     }
     //Nuevo contacto con imagen
     public  void nuevoContacto(String nombre, String numero,Bitmap mBitmap) {
@@ -112,6 +114,7 @@ public class Contactos {
         }
         lc = null;
         lc = getContactos();
+        numContactos = lc.size();
     }
     /*
     Eimina contacto de la lista en memoria y de la BD
@@ -134,10 +137,11 @@ public class Contactos {
             e.printStackTrace();
         }
         lc.remove(getContactoPosicion(c.getId()));
+        numContactos = lc.size();
 
     }
     public List<Contacto> getContactos(){
-        if(lc == null) {
+        if(lc == null || lc.size()<numContactos) {
             List<Contacto> l = new ArrayList<Contacto>();
 
             Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
@@ -164,6 +168,7 @@ public class Contactos {
                 people.close();
             }
             lc=l;
+            numContactos = lc.size();
         }
         return lc;
 
