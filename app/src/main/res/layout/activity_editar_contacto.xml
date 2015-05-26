@@ -58,7 +58,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Guardar"
+        android:text="@string/Guardar"
         android:id="@+id/buttonGuardar"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/editTextNumero"
@@ -67,7 +67,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancelar"
+        android:text="@string/Cancelar"
         android:id="@+id/buttonCancelar"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"

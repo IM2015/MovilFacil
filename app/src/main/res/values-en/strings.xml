@@ -42,5 +42,7 @@
     <string name="action_Apps">Phone apps</string>
     <string name="Atención">Warning</string>
     <string name="ErrorMensaje">You have to write something</string>
+    <string name="Cancelar">Cancel</string>
+    <string name="Guardar">Save</string>
     <!--<string name="NuevoMensaje">New sms</string>-->
 </resources>
