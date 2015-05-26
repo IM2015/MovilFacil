@@ -40,4 +40,7 @@
     <string name="AgregarContacto">New contact</string>
     <string name="GestionarFavoritos">Edit favourites</string>
     <string name="action_Apps">Phone apps</string>
+    <string name="Atención">Warning</string>
+    <string name="ErrorMensaje">You have to write something</string>
+    <!--<string name="NuevoMensaje">New sms</string>-->
 </resources>

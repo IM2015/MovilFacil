@@ -41,6 +41,15 @@ public class MenssageBox extends ActionBarActivity {
                 pop.show(fm, "Dialog Fragment");
             }
         });
+        /*//nuevo mensaje
+        Button newMensaje =(Button) findViewById(R.id.btnNuevoMensaje);
+        newMensaje.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), EnvioMensaje.class);
+                startActivity(i);
+            }
+        });*/
 
     }
 

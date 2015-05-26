@@ -1,5 +1,7 @@
 package com.im2015.movilfacil;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -36,9 +38,17 @@ public class EnvioMensaje extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     String mensaje = ((EditText) EnvioMensaje.this.findViewById(R.id.txtSmsText)).getText().toString();
-                    new Mensajes(EnvioMensaje.this.getBaseContext()).enviar(numero,mensaje);
+                    if(!mensaje.isEmpty()){
+                        new Mensajes(EnvioMensaje.this.getBaseContext()).enviar(numero,mensaje);
+                        finish();
+                    }else{
+                        new AlertDialog.Builder(EnvioMensaje.this)
+                                .setMessage(getString(R.string.ErrorMensaje))
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .show();
+                    }
 
-                    finish();
+
                 }
             });
         }else{

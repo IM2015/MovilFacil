@@ -27,6 +27,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DigitalClock;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
@@ -178,8 +179,7 @@ public class menu_Inicio extends ActionBarActivity {
         tvBateria.setText(getString(R.string.carga) +
                 String.valueOf(carga) + "%");
         pbBateria.setProgress((int)(carga * 100 / 100));
-
-
+        
     }
 
     @Override
