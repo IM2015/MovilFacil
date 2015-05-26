@@ -25,6 +25,7 @@ public class editarContacto extends ActionBarActivity {
         String nombre = args.getString("nombre");
         String numero = args.getString("numero");
         contacto = new Contacto(id,nombre,numero);
+        contacto=new Contactos(cr).getContactoId(id);
         EditText etNombre = (EditText) editarContacto.this.findViewById(R.id.editTextNombre);
         EditText etNumero = (EditText) editarContacto.this.findViewById(R.id.editTextNumero);
         etNombre.setText(nombre);

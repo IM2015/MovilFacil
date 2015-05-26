@@ -203,13 +203,14 @@ if(imagen!=null){
                     Bitmap imagen = BitmapFactory.decodeStream(bis);
                     //Modificar el contacto
                     Contactos c = new Contactos(activ.getContentResolver());
-                    c.editarContacto(
-                            contacto,
-                            contacto.getNombre(),
-                            contacto.getNumero(),
-                            imagen
-                    );
-
+                    if(imagen!=null) {
+                        c.editarContacto(
+                                contacto,
+                                contacto.getNombre(),
+                                contacto.getNumero(),
+                                imagen
+                        );
+                    }
                 } catch (FileNotFoundException e) {
                 }
             }
