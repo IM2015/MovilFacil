@@ -35,7 +35,11 @@ public class Apps {
                     intent = ri.activityInfo.processName;
                     int icon = ri.activityInfo.getIconResource();
                     try {
-                        d = pkmgr.getActivityIcon(pkmgr.getLaunchIntentForPackage(intent));
+                        if(pkmgr.getLaunchIntentForPackage(intent) != null){
+                            d = pkmgr.getActivityIcon(pkmgr.getLaunchIntentForPackage(intent));
+                            componentList.add(new App(intent,name,d));
+                        }
+
                     } catch (PackageManager.NameNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -46,6 +50,7 @@ public class Apps {
                             pkmgr).toString();
                     intent = ri.activityInfo.processName;
                     d=ri.activityInfo.applicationInfo.loadIcon(pkmgr);
+                    componentList.add(new App(intent,name,d));
                     /*try{
                         d = pkmgr.getActivityIcon(pkmgr.getLaunchIntentForPackage(intent));
                     } catch (PackageManager.NameNotFoundException e) {
@@ -53,7 +58,7 @@ public class Apps {
                     }*/
 
                 }
-                componentList.add(new App(intent,name,d));
+
             }
         }
         return componentList;
