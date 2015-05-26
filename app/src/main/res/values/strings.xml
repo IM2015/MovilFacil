@@ -48,6 +48,8 @@
     <string name="title_activity_apps">Apps</string>
     <string name="Atención">Atención</string>
     <string name="ErrorMensaje">Debes introducir un texto en el mensaje</string>
+    <string name="Cancelar">Cancelar</string>
+    <string name="Guardar">Guardar</string>
     <!--<string name="NuevoMensaje">Nuevo mensaje</string>-->
 
 </resources>
