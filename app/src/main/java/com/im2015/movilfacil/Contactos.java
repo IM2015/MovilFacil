@@ -217,7 +217,7 @@ public class Contactos {
      */
     public void editarContacto(Contacto viejo,String nuevoNombre, String nuevoNumero){
         eliminarContacto(viejo);
-        this.nuevoContacto(nuevoNombre,nuevoNumero);
+        this.nuevoContacto(nuevoNombre,nuevoNumero,viejo.getFoto());
     }
     /*
     Editar Contacto

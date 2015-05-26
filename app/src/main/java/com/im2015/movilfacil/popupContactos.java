@@ -154,15 +154,15 @@ public class popupContactos extends DialogFragment {
                     /**
                      * De lo contrario es una imagen completa
                      */
-                } else {
-                    /**
+                } /*else {
+                    *//**
                      * A partir del nombre del archivo ya definido lo buscamos y creamos el bitmap
                      * para el ImageView
-                     */
+                     *//*
                     imagen = BitmapFactory.decodeFile(name);
-                    /**
+                    *//**
                      * Para guardar la imagen en la galer�a, utilizamos una conexi�n a un MediaScanner
-                     */
+                     *//*
                     new MediaScannerConnection.MediaScannerConnectionClient() {
                         private MediaScannerConnection msc = null;
 
@@ -179,9 +179,9 @@ public class popupContactos extends DialogFragment {
                             msc.disconnect();
                         }
                     };
-                }
+                }*/
 
-if(imagen!=null){
+            if(imagen!=null){
                 //Modificar el contacto
                 Contactos c = new Contactos(activ.getContentResolver());
                 c.editarContacto(
