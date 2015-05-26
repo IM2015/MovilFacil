@@ -160,7 +160,6 @@ public class ListaContactosActivity extends ActionBarActivity {
             }
         });
     }
-
     private void openSearchBar(String queryText) {
 
         // Set custom view on action bar.
@@ -269,7 +268,6 @@ public class ListaContactosActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
 
     }
-
     @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Popup1.onActivityResult(requestCode,resultCode,data);
     }
