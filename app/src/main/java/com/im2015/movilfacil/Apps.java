@@ -39,18 +39,21 @@ public class Apps {
                     } catch (PackageManager.NameNotFoundException e) {
                         e.printStackTrace();
                     }
-                    componentList.add(new App(intent,name,d));
+//                    componentList.add(new App(intent,name,d));
                 } else {
+
                     name = ri.activityInfo.applicationInfo.loadLabel(
                             pkmgr).toString();
                     intent = ri.activityInfo.processName;
-                    /*try {
+                    d=ri.activityInfo.applicationInfo.loadIcon(pkmgr);
+                    /*try{
                         d = pkmgr.getActivityIcon(pkmgr.getLaunchIntentForPackage(intent));
                     } catch (PackageManager.NameNotFoundException e) {
                         e.printStackTrace();
                     }*/
-                }
 
+                }
+                componentList.add(new App(intent,name,d));
             }
         }
         return componentList;

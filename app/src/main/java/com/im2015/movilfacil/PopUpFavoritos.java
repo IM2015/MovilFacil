@@ -36,7 +36,7 @@ public class PopUpFavoritos extends DialogFragment {
             titulos = new String[3];
             titulos[0] = this.getString(R.string.llamar);
             titulos[1] = this.getString(R.string.mensaje);
-            titulos[2] = "Gestionar Favoritos"; 
+            titulos[2] = this.getString(R.string.GestionarFavoritos);
         }
         Bundle args = this.getArguments();
         String id = args.getString("id");
@@ -46,7 +46,7 @@ public class PopUpFavoritos extends DialogFragment {
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(R.string.dialog_contacts_title)
+        builder
                 .setItems(titulos, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
