@@ -179,7 +179,7 @@ public class menu_Inicio extends ActionBarActivity {
         tvBateria.setText(getString(R.string.carga) +
                 String.valueOf(carga) + "%");
         pbBateria.setProgress((int)(carga * 100 / 100));
-        
+
     }
 
     @Override
@@ -287,6 +287,12 @@ public class menu_Inicio extends ActionBarActivity {
         ib= (ImageButton) menu_Inicio.this.findViewById(R.id.ibFav1);
         if(cf.getfav1()!=null){
             con=c.getContactoId(cf.getfav1());
+            if(con==null){
+                cf.deleteFav1();
+                tv.setText("");
+                ib.setImageResource(R.drawable.user168);
+            }else{
+
 
             tv.setText(con.getNombre());
 
@@ -296,7 +302,7 @@ public class menu_Inicio extends ActionBarActivity {
             }else{
                 ib.setImageResource(R.drawable.user168);
             }
-
+            }
         }else{
 
             tv.setText("");
@@ -307,16 +313,20 @@ public class menu_Inicio extends ActionBarActivity {
         ib= (ImageButton) menu_Inicio.this.findViewById(R.id.ibFav2);
         if(cf.getfav2()!=null){
             con=c.getContactoId(cf.getfav2());
-
-            tv.setText(con.getNombre());
-
-            Bitmap foto= con.getFoto();
-            if(foto!=null){
-                ib.setImageBitmap(foto);
-            }else{
+            if(con==null){
+                cf.deleteFav2();
+                tv.setText("");
                 ib.setImageResource(R.drawable.user168);
-            }
+            }else {
+                tv.setText(con.getNombre());
 
+                Bitmap foto = con.getFoto();
+                if (foto != null) {
+                    ib.setImageBitmap(foto);
+                } else {
+                    ib.setImageResource(R.drawable.user168);
+                }
+            }
         }else{
 
             tv.setText("");
@@ -327,16 +337,20 @@ public class menu_Inicio extends ActionBarActivity {
         ib= (ImageButton) menu_Inicio.this.findViewById(R.id.ibFav3);
         if(cf.getfav3()!=null){
             con=c.getContactoId(cf.getfav3());
-
-            tv.setText(con.getNombre());
-
-            Bitmap foto= con.getFoto();
-            if(foto!=null){
-                ib.setImageBitmap(foto);
-            }else{
+            if(con==null){
+                cf.deleteFav3();
+                tv.setText("");
                 ib.setImageResource(R.drawable.user168);
-            }
+            }else {
+                tv.setText(con.getNombre());
 
+                Bitmap foto = con.getFoto();
+                if (foto != null) {
+                    ib.setImageBitmap(foto);
+                } else {
+                    ib.setImageResource(R.drawable.user168);
+                }
+            }
         }else{
 
             tv.setText("");

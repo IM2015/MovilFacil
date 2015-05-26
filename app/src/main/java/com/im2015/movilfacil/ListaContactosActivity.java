@@ -47,13 +47,15 @@ public class ListaContactosActivity extends ActionBarActivity {
     private final Context context = this;
     @Override
     protected void onResume(){
-        c = new Contactos(cr);
         super.onResume();
+
+        c = new Contactos(getContentResolver());
+
         this.listView = (ListView) findViewById(R.id.listViewContactos);
         listaDeRepuesto = new ArrayList<Contacto>();
         this.list =c.getContactos() ;
         this.listView.setAdapter(new ItemAdapter(this,list));
-        mSearchOpened=false;
+        /*mSearchOpened=false;
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -93,7 +95,9 @@ public class ListaContactosActivity extends ActionBarActivity {
                     Popup1.show(fm, "Dialog Fragment");
                 }
             }
-        });
+        });*/
+
+
 
     }
     @Override
@@ -119,7 +123,9 @@ public class ListaContactosActivity extends ActionBarActivity {
                 Contacto c = (Contacto) adapter.getItemAtPosition(position);
                 //Comprobamos si estamos añadiendo un favorito
                 Bundle args = getIntent().getExtras();
-                String numFav = args.getString("NumFav");
+                String numFav=null;
+                if(args!=null){  numFav = args.getString("NumFav");}
+
                 if (numFav != null) {
                     Intent i = new Intent(getApplicationContext(), GestorFavoritos.class);
                     switch (numFav) {

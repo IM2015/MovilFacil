@@ -137,64 +137,51 @@ public class popupContactos extends DialogFragment {
         /**
          * Se revisa si la imagen viene de la c�mara (TAKE_PICTURE) o de la galer�a (SELECT_PICTURE)
          */
-
-        if (requestCode == TAKE_PICTURE) {
-            /**
-             * Si se reciben datos en el intent tenemos una vista previa (thumbnail)
-             */
-            Bitmap imagen=null;
-            if (data != null) {
+        try {
+            if (requestCode == TAKE_PICTURE) {
                 /**
-                 * En el caso de una vista previa, obtenemos el extra �data� del intent y
-                 * lo mostramos en el ImageView
+                 * Si se reciben datos en el intent tenemos una vista previa (thumbnail)
                  */
-                if (data.hasExtra("data")) {
-                    imagen=(Bitmap) data.getParcelableExtra("data");
+                Bitmap imagen = null;
+                if (data != null) {
+                    /**
+                     * En el caso de una vista previa, obtenemos el extra �data� del intent y
+                     * lo mostramos en el ImageView
+                     */
+                    if (data.hasExtra("data")) {
+                        imagen = (Bitmap) data.getParcelableExtra("data");
+                    }
+                    /**
+                     * De lo contrario es una imagen completa
+                     */
+                } else {
+                    /**
+                     * A partir del nombre del archivo ya definido lo buscamos y creamos el bitmap
+                     * para el ImageView
+                     */
+                    imagen = BitmapFactory.decodeFile(name);
+                    /**
+                     * Para guardar la imagen en la galer�a, utilizamos una conexi�n a un MediaScanner
+                     */
+                    new MediaScannerConnection.MediaScannerConnectionClient() {
+                        private MediaScannerConnection msc = null;
+
+                        {
+                            msc = new MediaScannerConnection(activ.getApplicationContext(), this);
+                            msc.connect();
+                        }
+
+                        public void onMediaScannerConnected() {
+                            msc.scanFile(name, null);
+                        }
+
+                        public void onScanCompleted(String path, Uri uri) {
+                            msc.disconnect();
+                        }
+                    };
                 }
-                /**
-                 * De lo contrario es una imagen completa
-                 */
-            } else {
-                /**
-                 * A partir del nombre del archivo ya definido lo buscamos y creamos el bitmap
-                 * para el ImageView
-                 */
-                imagen=BitmapFactory.decodeFile(name);
-                /**
-                 * Para guardar la imagen en la galer�a, utilizamos una conexi�n a un MediaScanner
-                 */
-                new MediaScannerConnection.MediaScannerConnectionClient() {
-                    private MediaScannerConnection msc = null; {
-                        msc = new MediaScannerConnection(activ.getApplicationContext(), this); msc.connect();
-                    }
-                    public void onMediaScannerConnected() {
-                        msc.scanFile(name, null);
-                    }
-                    public void onScanCompleted(String path, Uri uri) {
-                        msc.disconnect();
-                    }
-                };
-            }
 
-
-            //Modificar el contacto
-            Contactos c = new Contactos(activ.getContentResolver());
-            c.editarContacto(
-                    contacto,
-                    contacto.getNombre(),
-                    contacto.getNumero(),
-                    imagen
-            );
-            /**
-             * Recibimos el URI de la imagen y construimos un Bitmap a partir de un stream de Bytes
-             */
-        } else if (requestCode ==  SELECT_PICTURE){
-            Uri selectedImage = data.getData();
-            InputStream is;
-            try {
-                is = activ.getContentResolver().openInputStream(selectedImage);
-                BufferedInputStream bis = new BufferedInputStream(is);
-                Bitmap imagen = BitmapFactory.decodeStream(bis);
+if(imagen!=null){
                 //Modificar el contacto
                 Contactos c = new Contactos(activ.getContentResolver());
                 c.editarContacto(
@@ -203,8 +190,31 @@ public class popupContactos extends DialogFragment {
                         contacto.getNumero(),
                         imagen
                 );
+            }
+                /**
+                 * Recibimos el URI de la imagen y construimos un Bitmap a partir de un stream de Bytes
+                 */
+            } else if (requestCode == SELECT_PICTURE) {
+                Uri selectedImage = data.getData();
+                InputStream is;
+                try {
+                    is = activ.getContentResolver().openInputStream(selectedImage);
+                    BufferedInputStream bis = new BufferedInputStream(is);
+                    Bitmap imagen = BitmapFactory.decodeStream(bis);
+                    //Modificar el contacto
+                    Contactos c = new Contactos(activ.getContentResolver());
+                    c.editarContacto(
+                            contacto,
+                            contacto.getNombre(),
+                            contacto.getNumero(),
+                            imagen
+                    );
 
-            } catch (FileNotFoundException e) {}
+                } catch (FileNotFoundException e) {
+                }
+            }
+        }catch (NullPointerException npe){
+
         }
     }
 
