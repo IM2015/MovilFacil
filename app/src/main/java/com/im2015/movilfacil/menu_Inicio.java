@@ -217,7 +217,6 @@ public class menu_Inicio extends ActionBarActivity {
             //mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
            // startActivity(mainIntent);
             Intent i = new Intent(getBaseContext(),AppListActivity.class);
-
             startActivity(i);
 //            List<ResolveInfo> ril = getPackageManager().queryIntentActivities(mainIntent, 0);
 //            List<String> componentList = new ArrayList<String>();

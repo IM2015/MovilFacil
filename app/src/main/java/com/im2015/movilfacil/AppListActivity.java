@@ -1,5 +1,6 @@
 package com.im2015.movilfacil;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.v7.app.ActionBarActivity;
@@ -21,15 +22,17 @@ public class AppListActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apps);
-        List<App> l = Apps.getApps(getPackageManager());
-        this.listView = (ListView) findViewById(R.id.list_item);
-        listView.setAdapter(new AppAdapter(getApplicationContext(),l));
+        Context c = getApplicationContext();
+        PackageManager p = getPackageManager();
+        List<App> l = Apps.getApps(p);
+        this.listView = (ListView) findViewById(R.id.ListApps);
+        listView.setAdapter(new AppAdapter(c,l));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view,
                                     int position, long arg) {
                 App a = (App) adapter.getItemAtPosition(position);
-                Intent i = new Intent(a.getIntent());
+                Intent i = getPackageManager().getLaunchIntentForPackage(a.getNombre());
                 startActivity(i);
 
             }

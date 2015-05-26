@@ -1,15 +1,21 @@
 package com.im2015.movilfacil;
 
+import android.content.Intent;
+
 /**
  * Created by Carlos on 26/05/2015.
  */
 public class App {
     private String nombre;
-    private String intent;
+    private Intent intent;
 
-    public App(String intent, String nombre) {
+    public App(Intent intent, String nombre) {
         this.intent = intent;
         this.nombre = nombre;
+    }
+
+    public App(String name) {
+        this.nombre=name;
     }
 
     public String getNombre() {
@@ -20,11 +26,11 @@ public class App {
         this.nombre = nombre;
     }
 
-    public String getIntent() {
+    public Intent getIntent() {
         return intent;
     }
 
-    public void setIntent(String intent) {
+    public void setIntent(Intent intent) {
         this.intent = intent;
     }
 }
