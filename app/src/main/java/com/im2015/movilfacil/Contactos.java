@@ -3,6 +3,7 @@ package com.im2015.movilfacil;
 import android.accounts.AccountManager;
 import android.app.Activity;
 import android.content.ContentProviderOperation;
+import android.content.ContentProviderResult;
 import android.content.ContentResolver;
 import android.content.OperationApplicationException;
 import android.database.Cursor;
@@ -23,7 +24,7 @@ import java.util.List;
  */
 public class Contactos {
     ContentResolver cr;
-    private List<Contacto> lc;
+    private static List<Contacto> lc;
 
     public Contactos(ContentResolver contentResolver){
         cr=contentResolver;
@@ -51,12 +52,15 @@ public class Contactos {
         );
 
         try {
-            cr.applyBatch(ContactsContract.AUTHORITY, comandosAgregar);
+            ContentProviderResult[] contentProviderResults = cr.applyBatch(ContactsContract.AUTHORITY, comandosAgregar);
+            contentProviderResults[0].toString();
         } catch (RemoteException e) {
             e.printStackTrace();
         } catch (OperationApplicationException e) {
             e.printStackTrace();
         }
+        lc = null;
+        lc = getContactos();
     }
     //Nuevo contacto con imagen
     public  void nuevoContacto(String nombre, String numero,Bitmap mBitmap) {
@@ -106,6 +110,8 @@ public class Contactos {
         } catch (OperationApplicationException e) {
             e.printStackTrace();
         }
+        lc = null;
+        lc = getContactos();
     }
     /*
     Eimina contacto de la lista en memoria y de la BD
@@ -127,22 +133,24 @@ public class Contactos {
         } catch (OperationApplicationException e) {
             e.printStackTrace();
         }
+        lc.remove(getContactoPosicion(c.getId()));
 
     }
     public List<Contacto> getContactos(){
-        List<Contacto> l = new ArrayList<Contacto>();
+        if(lc == null) {
+            List<Contacto> l = new ArrayList<Contacto>();
 
-        Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
-        String[] projection    = new String[] {ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
-                ContactsContract.CommonDataKinds.Phone.NUMBER,
-                ContactsContract.CommonDataKinds.Phone._ID,
-                ContactsContract.CommonDataKinds.Phone.PHOTO_ID};
+            Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
+            String[] projection = new String[]{ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+                    ContactsContract.CommonDataKinds.Phone.NUMBER,
+                    ContactsContract.CommonDataKinds.Phone._ID,
+                    ContactsContract.CommonDataKinds.Phone.PHOTO_ID};
 
-        Cursor people = cr.query(uri, /* projection */null, null, null, "upper("+ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + ") ASC");
-        int indexName = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
-        int indexNumber = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
-        int indexId=people.getColumnIndex(ContactsContract.CommonDataKinds.Phone._ID);
-        int indexPhoto=people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_ID);
+            Cursor people = cr.query(uri, /* projection */null, null, null, "upper(" + ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + ") ASC");
+            int indexName = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
+            int indexNumber = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+            int indexId = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone._ID);
+            int indexPhoto = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_ID);
             if (people.getCount() > 0) {
                 people.moveToFirst();
                 do {
@@ -155,8 +163,9 @@ public class Contactos {
                 } while (people.moveToNext());
                 people.close();
             }
-
-        return l;
+            lc=l;
+        }
+        return lc;
 
     }
     /*
@@ -203,7 +212,7 @@ public class Contactos {
      */
     public void editarContacto(Contacto viejo,String nuevoNombre, String nuevoNumero){
         eliminarContacto(viejo);
-        this.nuevoContacto(nuevoNombre,nuevoNumero);
+        this.nuevoContacto(nuevoNombre,nuevoNumero,viejo.getFoto());
     }
     /*
     Editar Contacto
