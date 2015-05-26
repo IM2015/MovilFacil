@@ -51,6 +51,8 @@ public class ItemAdapter extends BaseAdapter {
         Bitmap foto= item.getFoto();
         if(foto!=null){
             ivItem.setImageBitmap(foto);
+        }else{
+            ivItem.setImageResource(R.drawable.user91);
         }
         //ivItem.setImageResource(item.getImagen()); //Cuando añadamos imagenes a los contactos descomentar y quitar src del imageview
         return rowView;

@@ -47,7 +47,11 @@ public class ContactAdapter extends BaseAdapter {
         TextView tvTitle = (TextView) rowView.findViewById(R.id.tvNombre);
         TextView tvTfno= (TextView) rowView.findViewById(R.id.tvTfno);
         Contacto item = this.items.get(position);
-        ivItem.setImageBitmap(item.getFoto());
+        if(item.getFoto()!=null){
+            ivItem.setImageBitmap(item.getFoto());
+        }else{
+            ivItem.setImageResource(R.drawable.user91);
+        }
         tvTitle.setText(item.getNombre());
         tvTfno.setText(item.getNumero());
         //ivItem.setImageResource(item.getImagen()); //Cuando añadamos imagenes a los contactos descomentar y quitar src del imageview

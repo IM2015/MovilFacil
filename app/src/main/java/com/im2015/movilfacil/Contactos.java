@@ -162,7 +162,7 @@ public class Contactos {
                     if (Integer.valueOf(people.getInt(indexPhoto)) != null) {
                         l.add(new Contacto(people.getString(indexId), people.getString(indexName), people.getString(indexNumber), getFotoBitmap(people.getInt(indexPhoto))));
                     } else {
-                        l.add(new Contacto(people.getString(indexId), people.getString(indexName), people.getString(indexNumber)));
+                        l.add(new Contacto(people.getString(indexId), people.getString(indexName), people.getString(indexNumber),null));
                     }
                 } while (people.moveToNext());
                 people.close();
